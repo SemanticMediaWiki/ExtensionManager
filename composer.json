@@ -1,5 +1,5 @@
 {
-	"name": "mediawiki/composer-packages",
+	"name": "mwjames/mw-composerpackages",
 	"type": "mediawiki-extension",
 	"description": "List composer packages used within MedaiWiki",
 	"keywords": [
