@@ -56,22 +56,22 @@ class TextBuilder {
 		$out = '';
 
 		$out .= Html::openElement( 'table', array( 'class' => 'wikitable sortable', 'width' => '100%' ) ) .
-				Html::openElement( 'tr' ) .
-					$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-package' ) ) .
-					$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-type' ) ) .
-					$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-version' ) ) .
-					$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-time' ) ) .
-					$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-dependencies' ) ) .
-				Html::closeElement( 'tr' );
+			Html::openElement( 'tr' ) .
+				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-package' ) ) .
+				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-type' ) ) .
+				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-version' ) ) .
+				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-time' ) ) .
+				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-dependencies' ) ) .
+			Html::closeElement( 'tr' );
 
 		foreach ( $this->mapper->getPackages() as $package ) {
 			$out .= Html::openElement( 'tr' ) .
-					$this->createElement( 'td', $this->mapper->getElement( 'name', $package ) ) .
-					$this->createElement( 'td', $this->mapper->getElement( 'type', $package ) ) .
-					$this->createElement( 'td', $this->mapper->getElement( 'version', $package ) ) .
-					$this->createElement( 'td', $this->mapper->getElement( 'time', $package ) ) .
-					$this->createElement( 'td', $this->getPackageDependencies( $this->mapper->getElement( 'require', $package ) ) ) .
-					Html::closeElement( 'tr' );
+				$this->createElement( 'td', $this->mapper->getElement( 'name', $package ) ) .
+				$this->createElement( 'td', $this->mapper->getElement( 'type', $package ) ) .
+				$this->createElement( 'td', $this->mapper->getElement( 'version', $package ) ) .
+				$this->createElement( 'td', $this->mapper->getElement( 'time', $package ) ) .
+				$this->createElement( 'td', $this->createDependencyList( $this->mapper->getElement( 'require', $package ) ) ) .
+				Html::closeElement( 'tr' );
 		}
 
 		return $out . Html::closeElement( 'table' );
@@ -88,7 +88,7 @@ class TextBuilder {
 	/**
 	 * @since 0.1
 	 */
-	protected function getPackageDependencies( $require ) {
+	protected function createDependencyList( $require ) {
 
 		$out = '';
 
