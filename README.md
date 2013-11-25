@@ -1,7 +1,5 @@
 A simple extension that deploys a <code>Special:ListComposerPackages</code> page in order to display information about which composer packages are installed and used within MediaWiki.
 
-For more information about how to use MediaWiki and [Composer][composer], see [here][mwcomposer].
-
 ## Installation
 The recommended way to install this extension is through `Composer`. Just add the following to the MediaWiki ``composer.json`` file and run the ``php composer.phar install/update`` command.
 
@@ -19,6 +17,7 @@ The recommended way to install this extension is through `Composer`. Just add th
 	"minimum-stability" : "dev"
 }
 ```
+For more information about how to use MediaWiki and [Composer][composer], see [here][mwcomposer].
 
 [composer]: http://getcomposer.org/
 [mwcomposer]: https://www.mediawiki.org/wiki/Composer
