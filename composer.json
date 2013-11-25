@@ -1,11 +1,11 @@
 {
-	"name": "mwjames/mw-composerpackages",
+	"name": "mwjames/composer-packages",
 	"type": "mediawiki-extension",
 	"description": "List composer packages used within MedaiWiki",
 	"keywords": [
 		"composer"
 	],
-	"homepage": "https://github.com/mwjames/mw-composerpackages",
+	"homepage": "https://github.com/mwjames/composer-packages",
 	"license": "GPL-2.0+",
 	"authors": [
 		{
