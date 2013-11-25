@@ -19,6 +19,9 @@
 	"autoload": {
 		"files" : [
 			"ComposerPackages.php"
-		]
+		],
+		"psr-0": {
+			"ComposerPackages\\": "src/",
+		}
 	}
 }
