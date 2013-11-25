@@ -54,7 +54,7 @@ class PackagesFileReader {
 		$file = $this->sourceFile->getFullPath();
 
 		if ( !$this->assertFileExists( $file ) ) {
-			throw new InvalidArgumentException( 'File does not exists' );
+			throw new InvalidArgumentException( 'File does not exist' );
 		}
 
 		$fileContents = json_decode( $this->fetchFileContents( $file ), true );

@@ -16,7 +16,8 @@ class PackagesFile {
 	/**
 	 * @since 0.1
 	 *
-	 * @param
+	 * @param string|null $directory
+	 * @param string|null $fileName
 	 */
 	public function __construct( $directory = null, $fileName = null ) {
 		$this->directory = $directory;

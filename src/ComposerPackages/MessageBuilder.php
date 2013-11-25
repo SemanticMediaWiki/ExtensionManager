@@ -26,7 +26,7 @@ class MessageBuilder {
 	/**
 	 * @since 0.1
 	 *
-	 * @return Message
+	 * @return string
 	 */
 	public function getText() {
 		$message = $this->msg( func_get_args() );
@@ -42,4 +42,5 @@ class MessageBuilder {
 		$message = call_user_func_array( array( $this->context, 'msg' ), func_get_args() );
 		return $message;
 	}
+
 }

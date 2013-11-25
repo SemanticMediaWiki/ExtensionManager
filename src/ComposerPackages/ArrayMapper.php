@@ -5,7 +5,7 @@ namespace ComposerPackages;
 use InvalidArgumentException;
 
 /**
- * Provides mapping of array elements to a composer file
+ * Provides mapping of array elements to composer keys
  *
  * @licence GNU GPL v2+
  * @since 0.1
@@ -33,7 +33,7 @@ class ArrayMapper {
   	);
 
 	/**
-	 * @since 1.9
+	 * @since 0.1
 	 *
 	 * @param array $contents
 	 */
@@ -44,7 +44,7 @@ class ArrayMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function getElement( $elementName, $package ) {
 		return $this->getArrayElement( $this->getExtenalKey( $elementName ), $package );
@@ -53,7 +53,7 @@ class ArrayMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public function getPackages() {
 		return $this->getElement( 'packages', $this->contents );
@@ -62,7 +62,7 @@ class ArrayMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @return string
+	 * @return array|null
 	 */
 	public function findPackage( $name ) {
 
@@ -77,10 +77,8 @@ class ArrayMapper {
 
 	/**
 	 * @since 0.1
-	 *
-	 * @return boolean
 	 */
-	protected function hasElement( $elementName, $element ) {
+	protected function hasArrayElement( $elementName, $element ) {
 
 		if ( isset( $element[ $elementName ] ) ) {
 			return true;
@@ -91,12 +89,10 @@ class ArrayMapper {
 
 	/**
 	 * @since 0.1
-	 *
-	 * @return boolean
 	 */
 	protected function getArrayElement( $elementName, $element ) {
 
-		if ( $this->hasElement( $elementName, $element ) ) {
+		if ( $this->hasArrayElement( $elementName, $element ) ) {
 			return $element[ $elementName ];
 		}
 
@@ -105,12 +101,10 @@ class ArrayMapper {
 
 	/**
 	 * @since 0.1
-	 *
-	 * @return string
 	 */
 	protected function getExtenalKey( $key ) {
 
-		if ( !$this->hasElement( $key, $this->composerKey ) ) {
+		if ( !$this->hasArrayElement( $key, $this->composerKey ) ) {
 			throw new InvalidArgumentException( 'Element is can not be mapped or is unknown' );
 		}
 
