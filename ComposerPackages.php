@@ -27,3 +27,6 @@ $GLOBALS['wgExtensionMessagesFiles']['ComposerPackagesAlias'] = $dir . 'Composer
 
 // Special page
 $GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\ListComposerPackages';
+
+// Api
+$GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';

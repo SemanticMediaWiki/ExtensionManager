@@ -29,18 +29,8 @@ class MessageBuilder {
 	 * @return string
 	 */
 	public function getText() {
-		$message = $this->msg( func_get_args() );
-		return $message->text();
-	}
-
-	/**
-	 * @since 0.1
-	 *
-	 * @return Message
-	 */
-	protected function msg() {
 		$message = call_user_func_array( array( $this->context, 'msg' ), func_get_args() );
-		return $message;
+		return $message->text();
 	}
 
 }
