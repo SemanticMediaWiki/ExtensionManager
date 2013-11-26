@@ -15,7 +15,7 @@ $GLOBALS['wgExtensionCredits']['other'][] = array(
 	'name'            => 'ComposerPackages',
 	'version'         => COMPOSERPACKAGES_VERSION,
 	'author'          => array( 'mwjames' ),
-	'url'             => 'https://github.com/mwjames/mw-composerpackages',
+	'url'             => 'https://github.com/mwjames/composer-packages',
 	'descriptionmsg'  => 'composerpackages-desc',
 );
 
