@@ -41,8 +41,10 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testExecute() {
 
+		$instance = $this->newInstance();
+
 		try {
-			$this->newInstance()->execute( '' );
+			$instance->execute( '' );
 		} catch ( \Exception $exception ) {
 			if ( !( $exception instanceof \PermissionsError ) && !( $exception instanceof \ErrorPageError ) ) {
 				throw $exception;
@@ -58,12 +60,12 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 	public function testExecuteOnNotSupportedFormatRaisingUsageException() {
 
 		$instance = $this->newInstance();
+		$instance->getMain()->getResult()->setRawMode();
 
 		try {
-			$instance->getMain()->getResult()->setRawMode();
 			$instance->execute( '' );
 		} catch ( \UsageException $e ) {
-			$this->assertTrue( true, 'Asserts that XML format is not supported' );
+			$this->assertTrue( true, 'Asserts that the XML format currently is not supported' );
 		}
 
 	}

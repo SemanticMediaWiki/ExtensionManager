@@ -74,7 +74,7 @@ class ComposerPackages extends ApiBase {
 	 */
 	public function getDescription() {
 		return array(
-			'API module to query a composer packages.'
+			'API module to query installed composer packages.'
 		);
 	}
 
