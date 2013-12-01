@@ -2,11 +2,11 @@
 
 namespace ComposerPackages\Test;
 
-use ComposerPackages\PackagesFileReader;
+use ComposerPackages\ComposerFileReader;
 use ComposerPackages\PackagesFile;
 
 /**
- * @covers \ComposerPackages\PackagesFileReader
+ * @covers \ComposerPackages\ComposerFileReader
  *
  * @group ComposerPackages
  *
@@ -15,7 +15,7 @@ use ComposerPackages\PackagesFile;
  *
  * @author mwjames
  */
-class PackagesFileReaderTest extends \PHPUnit_Framework_TestCase {
+class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
 
 	protected $mockContent = '{
 		"packages": [
@@ -36,7 +36,7 @@ class PackagesFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function newInstance( $dir = null, $file = null ) {
-		return new PackagesFileReader( new PackagesFile( $dir, $file ) );
+		return new ComposerFileReader( new PackagesFile( $dir, $file ) );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class PackagesFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newFileReaderMock( $exists = true, $contents = '' ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\PackagesFileReader' )
+		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
 			->setConstructorArgs( array( new PackagesFile() ) )
 			->setMethods( array( 'assertFileExists', 'fetchFileContents' ) )
 			->getMock();
@@ -64,7 +64,7 @@ class PackagesFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\PackagesFileReader', $this->newInstance() );
+		$this->assertInstanceOf( '\ComposerPackages\ComposerFileReader', $this->newInstance() );
 	}
 
 	/**

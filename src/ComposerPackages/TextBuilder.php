@@ -17,10 +17,10 @@ class TextBuilder {
 	/**
 	 * @since 0.1
 	 *
-	 * @param ComposerFileMapper $mapper
+	 * @param ComposerContentMapper $mapper
 	 * @param MessageBuilder $messageBuilder
 	 */
-	public function __construct( ComposerFileMapper $mapper, MessageBuilder $messageBuilder ) {
+	public function __construct( ComposerContentMapper $mapper, MessageBuilder $messageBuilder ) {
 		$this->mapper = $mapper;
 		$this->messageBuilder = $messageBuilder;
 	}

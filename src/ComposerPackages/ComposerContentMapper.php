@@ -12,7 +12,7 @@ use InvalidArgumentException;
  *
  * @author mwjames
  */
-class ComposerFileMapper {
+class ComposerContentMapper {
 
 	/** @var array */
 	protected $fileReader = null;
@@ -23,7 +23,7 @@ class ComposerFileMapper {
 	 *
 	 * @var array
 	 */
-	protected $composerKey = array(
+	protected $composerKeyMapping = array(
 		'packages' => 'packages',
 		'name'     => 'name',
 		'version'  => 'version',
@@ -35,9 +35,9 @@ class ComposerFileMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @param PackagesFileReader $fileReader
+	 * @param ComposerFileReader $fileReader
 	 */
-	public function __construct( PackagesFileReader $fileReader ) {
+	public function __construct( ComposerFileReader $fileReader ) {
 		$this->fileReader = $fileReader;
 	}
 
@@ -47,7 +47,7 @@ class ComposerFileMapper {
 	 * @return mixed
 	 */
 	public function getElement( $elementName, $package ) {
-		return $this->getArrayElement( $this->getExtenalKey( $elementName ), $package );
+		return $this->getArrayElement( $this->getComposerKey( $elementName ), $package );
 	}
 
 	/**
@@ -102,13 +102,13 @@ class ComposerFileMapper {
 	/**
 	 * @since 0.1
 	 */
-	protected function getExtenalKey( $key ) {
+	protected function getComposerKey( $key ) {
 
-		if ( !$this->hasArrayElement( $key, $this->composerKey ) ) {
-			throw new InvalidArgumentException( 'Element is can not be mapped or is unknown' );
+		if ( !$this->hasArrayElement( $key, $this->composerKeyMapping ) ) {
+			throw new InvalidArgumentException( "Element {$key} can not be mapped or is unknown" );
 		}
 
-		return $this->getArrayElement( $key, $this->composerKey );
+		return $this->getArrayElement( $key, $this->composerKeyMapping );
 	}
 
 }

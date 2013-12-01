@@ -37,11 +37,11 @@ $GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
 	$services  = \ComposerPackages\ServicesBuilder::getInstance();
 
 	$services->registerObject( 'FileReader', function ( $builder ) use ( $directory ) {
-		return new \ComposerPackages\PackagesFileReader( new \ComposerPackages\PackagesFile( $directory, 'composer.lock' ) );
+		return new \ComposerPackages\ComposerFileReader( new \ComposerPackages\PackagesFile( $directory, 'composer.lock' ) );
 	} );
 
-	$services->registerObject( 'ComposerFileMapper', function ( $builder ) {
-		return new \ComposerPackages\ComposerFileMapper( $builder->newObject( 'FileReader' ) );
+	$services->registerObject( 'ContentMapper', function ( $builder ) {
+		return new \ComposerPackages\ComposerContentMapper( $builder->newObject( 'FileReader' ) );
 	} );
 
 	$services->registerObject( 'MessageBuilder', function ( $builder ) {
@@ -50,7 +50,7 @@ $GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
 
 	$services->registerObject( 'TextBuilder', function ( $builder ) {
 		return new \ComposerPackages\TextBuilder(
-			$builder->newObject( 'ComposerFileMapper' ),
+			$builder->newObject( 'ContentMapper' ),
 			$builder->newObject( 'MessageBuilder' )
 		);
 	} );

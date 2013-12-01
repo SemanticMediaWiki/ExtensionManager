@@ -13,7 +13,7 @@ use UnexpectedValueException;
  *
  * @author mwjames
  */
-class PackagesFileReader {
+class ComposerFileReader {
 
 	/**
 	 * @since 0.1

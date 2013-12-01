@@ -51,6 +51,50 @@ class ServicesBuilderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
+	public function testRegisterInvalidObjectSetOffInvalidArgumentException() {
+
+		$this->setExpectedException( 'InvalidArgumentException' );
+
+		$object = function( $builder ) {
+			return new \stdClass;
+		};
+
+		$instance = $this->newInstance();
+		$instance->registerObject( 'Foo', $object );
+
+		$instance->newObject( array( 'Foo' ) );
+
+	}
+
+	/**
+	 * @since 0.1
+	 */
+	public function testRegisterInvalidKeySetOffInvalidArgumentException() {
+
+		$this->setExpectedException( 'InvalidArgumentException' );
+
+		$object = function( $builder ) {
+			return new \stdClass;
+		};
+
+		$this->newInstance()->registerObject( $object, null );
+
+	}
+
+	/**
+	 * @since 0.1
+	 */
+	public function testRegisterInvalidObjectSignatureSetOffInvalidArgumentException() {
+
+		$this->setExpectedException( 'InvalidArgumentException' );
+
+		$this->newInstance()->registerObject( 'Foo', null );
+
+	}
+
+	/**
+	 * @since 0.1
+	 */
 	public function testRegisterObjectAsSingleton() {
 
 		$object = function( $builder ) {
@@ -87,6 +131,52 @@ class ServicesBuilderTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertInstanceOf( '\stdClass', $newObject );
 		$this->assertEquals( 'FooBar', $newObject->foo );
+
+	}
+
+	/**
+	 * @since 0.1
+	 */
+	public function testRegisterObjectWithInvalidArgumentSetOffInvalidArgumentException() {
+
+		$this->setExpectedException( 'InvalidArgumentException' );
+
+		$object = function( $builder ) {
+
+			$instance = new \stdClass;
+			$instance->foo = $builder->newObject( 'Bar' );
+
+			return $instance;
+		};
+
+		$instance = $this->newInstance();
+		$instance->registerObject( 'Foo', $object );
+
+		$instance->newObject( 'Foo', array(
+			new \stdClass
+		) );
+
+	}
+
+	/**
+	 * @since 0.1
+	 */
+	public function testRegisterObjectWithMissingObjectSetOffRuntimeException() {
+
+		$this->setExpectedException( 'RuntimeException' );
+
+		$object = function( $builder ) {
+
+			$instance = new \stdClass;
+			$instance->foo = $builder->newObject( 'Bar' );
+
+			return $instance;
+		};
+
+		$instance = $this->newInstance();
+		$instance->registerObject( 'Foo', $object );
+
+		$instance->newObject( 'Foo' );
 
 	}
 

@@ -2,10 +2,10 @@
 
 namespace ComposerPackages\Test;
 
-use ComposerPackages\ComposerFileMapper;
+use ComposerPackages\ComposerContentMapper;
 
 /**
- * @covers \ComposerPackages\ComposerFileMapper
+ * @covers \ComposerPackages\ComposerContentMapper
  *
  * @group ComposerPackages
  *
@@ -14,7 +14,7 @@ use ComposerPackages\ComposerFileMapper;
  *
  * @author mwjames
  */
-class ComposerFileMapperTest extends \PHPUnit_Framework_TestCase {
+class ComposerContentMapperTest extends \PHPUnit_Framework_TestCase {
 
 	protected $mockContent = array(
 		'packages' => array(
@@ -34,9 +34,9 @@ class ComposerFileMapperTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function newPackagesFileReaderMock( $contents = array() ) {
+	public function newComposerFileReaderMock( $contents = array() ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\PackagesFileReader' )
+		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'decodeJsonFile' ) )
 			->getMock();
@@ -52,14 +52,14 @@ class ComposerFileMapperTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function newInstance( $contents = array() ) {
-		return new ComposerFileMapper( $this->newPackagesFileReaderMock( $contents ) );
+		return new ComposerContentMapper( $this->newComposerFileReaderMock( $contents ) );
 	}
 
 	/**
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\ComposerFileMapper', $this->newInstance() );
+		$this->assertInstanceOf( '\ComposerPackages\ComposerContentMapper', $this->newInstance() );
 	}
 
 	/**
