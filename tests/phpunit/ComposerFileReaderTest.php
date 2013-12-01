@@ -45,7 +45,7 @@ class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
 	public function newFileReaderMock( $exists = true, $contents = '' ) {
 
 		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
-			->setConstructorArgs( array( new PackagesFile() ) )
+			->setConstructorArgs( array( new PackagesFile( 'Foo' ) ) )
 			->setMethods( array( 'assertFileExists', 'fetchFileContents' ) )
 			->getMock();
 

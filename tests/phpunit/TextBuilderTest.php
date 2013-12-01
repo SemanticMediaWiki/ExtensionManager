@@ -52,6 +52,23 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
+	public function newHtmlFormatterMock() {
+
+		$messageBuilder = $this->getMockBuilder( '\ComposerPackages\HtmlFormatter' )
+			->disableOriginalConstructor()
+			->setMethods( array( 'createElement' ) )
+			->getMock();
+
+		$messageBuilder->expects( $this->any() )
+			->method( 'createElement' )
+			->will( $this->returnValue( 'Foo' ) );
+
+		return $messageBuilder;
+	}
+
+	/**
+	 * @since 0.1
+	 */
 	public function newComposerFileReaderMock( $contents = array() ) {
 
 		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
@@ -72,7 +89,8 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	public function newInstance( $contents = array() ) {
 		return new TextBuilder(
 			new ComposerContentMapper( $this->newComposerFileReaderMock( $contents ) ),
-			$this->newMessageBuilderMock()
+			$this->newMessageBuilderMock(),
+			$this->newHtmlFormatterMock()
 		);
 	}
 

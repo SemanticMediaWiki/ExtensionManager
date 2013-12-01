@@ -16,6 +16,34 @@ use ComposerPackages\PackagesFile;
  */
 class PackagesFileTest extends \PHPUnit_Framework_TestCase {
 
+	/** @var array */
+	private $global = false;
+
+	/**
+	 * @return 0.1
+	 */
+	protected function setUp() {
+
+		if ( !isset( $GLOBALS['IP'] ) ) {
+			$GLOBALS['IP'] = 'Foo';
+			$this->global = true;
+		}
+
+		parent::setUp();
+
+	}
+
+	/**
+	 * @return 0.1
+	 */
+	protected function tearDown() {
+		parent::tearDown();
+
+		if ( $this->global ) {
+			unset( $GLOBALS['IP'] );
+		}
+	}
+
 	/**
 	 * @since 0.1
 	 */

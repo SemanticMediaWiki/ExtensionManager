@@ -2,8 +2,6 @@
 
 namespace ComposerPackages;
 
-use Html;
-
 /**
  * Class responsible for building a text output
  *
@@ -19,10 +17,12 @@ class TextBuilder {
 	 *
 	 * @param ComposerContentMapper $mapper
 	 * @param MessageBuilder $messageBuilder
+	 * @param HtmlFormatter $htmlFormatter
 	 */
-	public function __construct( ComposerContentMapper $mapper, MessageBuilder $messageBuilder ) {
+	public function __construct( ComposerContentMapper $mapper, MessageBuilder $messageBuilder, HtmlFormatter $htmlFormatter ) {
 		$this->mapper = $mapper;
 		$this->messageBuilder = $messageBuilder;
+		$this->htmlFormatter = $htmlFormatter;
 	}
 
 	/**
@@ -45,44 +45,46 @@ class TextBuilder {
 	 * @since 0.1
 	 */
 	protected function getTableSection() {
-		return $this->createElement( 'h2', $this->messageBuilder->getText( 'composerpackages-table-header' ) );
+		return $this->htmlFormatter->createElement( 'h2', $this->messageBuilder->getText( 'composerpackages-table-header' ) );
 	}
 
 	/**
 	 * @since 0.1
 	 */
 	protected function getTable() {
-
-		$out = '';
-
-		$out .= Html::openElement( 'table', array( 'class' => 'wikitable sortable', 'width' => '100%' ) ) .
-			Html::openElement( 'tr' ) .
-				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-package' ) ) .
-				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-type' ) ) .
-				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-version' ) ) .
-				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-time' ) ) .
-				$this->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-dependencies' ) ) .
-			Html::closeElement( 'tr' );
-
-		foreach ( $this->mapper->getPackages() as $package ) {
-			$out .= Html::openElement( 'tr' ) .
-				$this->createElement( 'td', $this->mapper->getElement( 'name', $package ) ) .
-				$this->createElement( 'td', $this->mapper->getElement( 'type', $package ) ) .
-				$this->createElement( 'td', $this->mapper->getElement( 'version', $package ) ) .
-				$this->createElement( 'td', $this->mapper->getElement( 'time', $package ) ) .
-				$this->createElement( 'td', $this->createDependencyList( $this->mapper->getElement( 'require', $package ) ) ) .
-				Html::closeElement( 'tr' );
-		}
-
-		return $out . Html::closeElement( 'table' );
-
+		return $this->htmlFormatter->createElement(
+			'table',
+			$this->createTableContent(),
+			array( 'class' => 'wikitable sortable', 'width' => '100%' )
+		);
 	}
 
 	/**
 	 * @since 0.1
 	 */
-	protected function createElement( $type, $text ) {
-		return Html::rawElement( $type, array(), $text );
+	protected function createTableContent() {
+
+		$out = '';
+
+		$out .= $this->htmlFormatter->createElement( 'tr',
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-package' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-type' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-version' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-time' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-dependencies' ) )
+		);
+
+		foreach ( $this->mapper->getPackages() as $package ) {
+			$out .= $this->htmlFormatter->createElement( 'tr',
+				$this->htmlFormatter->createElement( 'td', $this->mapper->getElement( 'name', $package ) ) .
+				$this->htmlFormatter->createElement( 'td', $this->mapper->getElement( 'type', $package ) ) .
+				$this->htmlFormatter->createElement( 'td', $this->mapper->getElement( 'version', $package ) ) .
+				$this->htmlFormatter->createElement( 'td', $this->mapper->getElement( 'time', $package ) ) .
+				$this->htmlFormatter->createElement( 'td', $this->createDependencyList( $this->mapper->getElement( 'require', $package ) ) )
+			);
+		}
+
+		return $out;
 	}
 
 	/**

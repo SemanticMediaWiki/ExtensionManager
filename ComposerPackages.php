@@ -6,53 +6,63 @@
  * @author mwjames
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) die();
+if ( defined( 'COMPOSERPACKAGES_VERSION' ) ) {
+	return 1;
+}
 
 define( 'COMPOSERPACKAGES_VERSION', '0.1' );
 
-$GLOBALS['wgExtensionCredits']['other'][] = array(
-	'path'            => __FILE__,
-	'name'            => 'ComposerPackages',
-	'version'         => COMPOSERPACKAGES_VERSION,
-	'author'          => array( 'mwjames' ),
-	'url'             => 'https://github.com/mwjames/composer-packages',
-	'descriptionmsg'  => 'composerpackages-desc',
-);
+if ( defined( 'MEDIAWIKI' ) ) {
 
-// Message class
-$GLOBALS['wgExtensionMessagesFiles']['ComposerPackages']      = __DIR__ . '/' . 'ComposerPackages.i18n.php';
-$GLOBALS['wgExtensionMessagesFiles']['ComposerPackagesAlias'] = __DIR__ . '/' . 'ComposerPackages.alias.php';
+	$GLOBALS['wgExtensionCredits']['other'][] = array(
+		'path'            => __FILE__,
+		'name'            => 'ComposerPackages',
+		'version'         => COMPOSERPACKAGES_VERSION,
+		'author'          => array( 'mwjames' ),
+		'url'             => 'https://github.com/mwjames/composer-packages',
+		'descriptionmsg'  => 'composerpackages-desc',
+	);
 
-// Special page
-$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\ListComposerPackages';
+	// Message class
+	$GLOBALS['wgExtensionMessagesFiles']['ComposerPackages']      = __DIR__ . '/' . 'ComposerPackages.i18n.php';
+	$GLOBALS['wgExtensionMessagesFiles']['ComposerPackagesAlias'] = __DIR__ . '/' . 'ComposerPackages.alias.php';
 
-// Api
-$GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';
+	// Special page
+	$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\ListComposerPackages';
 
-// Extension services registration
-$GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
+	// Api
+	$GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';
 
-	$directory = $GLOBALS['IP'];
-	$services  = \ComposerPackages\ServicesBuilder::getInstance();
+	// Extension services registration
+	$GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
 
-	$services->registerObject( 'FileReader', function ( $builder ) use ( $directory ) {
-		return new \ComposerPackages\ComposerFileReader( new \ComposerPackages\PackagesFile( $directory, 'composer.lock' ) );
-	} );
+		$directory = $GLOBALS['IP'];
+		$services  = \ComposerPackages\ServicesBuilder::getInstance();
 
-	$services->registerObject( 'ContentMapper', function ( $builder ) {
-		return new \ComposerPackages\ComposerContentMapper( $builder->newObject( 'FileReader' ) );
-	} );
+		$services->registerObject( 'FileReader', function ( $builder ) use ( $directory ) {
+			return new \ComposerPackages\ComposerFileReader( new \ComposerPackages\PackagesFile( $directory, 'composer.lock' ) );
+		} );
 
-	$services->registerObject( 'MessageBuilder', function ( $builder ) {
-		return new \ComposerPackages\MessageBuilder( $builder->newObject( 'RequestContext' ) );
-	} );
+		$services->registerObject( 'ContentMapper', function ( $builder ) {
+			return new \ComposerPackages\ComposerContentMapper( $builder->newObject( 'FileReader' ) );
+		} );
 
-	$services->registerObject( 'TextBuilder', function ( $builder ) {
-		return new \ComposerPackages\TextBuilder(
-			$builder->newObject( 'ContentMapper' ),
-			$builder->newObject( 'MessageBuilder' )
-		);
-	} );
+		$services->registerObject( 'MessageBuilder', function ( $builder ) {
+			return new \ComposerPackages\MessageBuilder( $builder->newObject( 'RequestContext' ) );
+		} );
 
-	return true;
-};
+		$services->registerObject( 'HtmlFormatter', function ( $builder ) {
+			return new \ComposerPackages\HtmlFormatter( new \Html() );
+		} );
+
+		$services->registerObject( 'TextBuilder', function ( $builder ) {
+			return new \ComposerPackages\TextBuilder(
+				$builder->newObject( 'ContentMapper' ),
+				$builder->newObject( 'MessageBuilder' ),
+				$builder->newObject( 'HtmlFormatter' )
+			);
+		} );
+
+		return true;
+	};
+}

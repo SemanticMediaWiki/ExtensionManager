@@ -15,6 +15,19 @@ use ComposerPackages\Api\ComposerPackages;
 class ExtensionFunctionsSetupIntegrationTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * @return 0.1
+	 */
+	protected function setUp() {
+
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+
+		parent::setUp();
+
+	}
+
+	/**
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
