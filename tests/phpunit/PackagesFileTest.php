@@ -16,8 +16,8 @@ use ComposerPackages\PackagesFile;
  */
 class PackagesFileTest extends \PHPUnit_Framework_TestCase {
 
-	/** @var array */
-	private $global = false;
+	/** @var boolean */
+	private $requiredIPSetting = false;
 
 	/**
 	 * @return 0.1
@@ -26,7 +26,7 @@ class PackagesFileTest extends \PHPUnit_Framework_TestCase {
 
 		if ( !isset( $GLOBALS['IP'] ) ) {
 			$GLOBALS['IP'] = 'Foo';
-			$this->global = true;
+			$this->requiredIPSetting = true;
 		}
 
 		parent::setUp();
@@ -39,7 +39,7 @@ class PackagesFileTest extends \PHPUnit_Framework_TestCase {
 	protected function tearDown() {
 		parent::tearDown();
 
-		if ( $this->global ) {
+		if ( $this->requiredIPSetting ) {
 			unset( $GLOBALS['IP'] );
 		}
 	}
