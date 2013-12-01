@@ -73,7 +73,7 @@ class ComposerPackages extends ApiBase {
 	 */
 	public function getDescription() {
 		return array(
-			'API module to query installed composer packages.'
+			'A module to query installed composer packages.'
 		);
 	}
 
@@ -96,7 +96,7 @@ class ComposerPackages extends ApiBase {
 	 * @return string
 	 */
 	public function getVersion() {
-		return __CLASS__ . '-' . SMW_VERSION;
+		return __CLASS__ . '-' . COMPOSERPACKAGES_VERSION;
 	}
 
 }

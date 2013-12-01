@@ -19,11 +19,9 @@ $GLOBALS['wgExtensionCredits']['other'][] = array(
 	'descriptionmsg'  => 'composerpackages-desc',
 );
 
-$dir = __DIR__ . '/';
-
 // Message class
-$GLOBALS['wgExtensionMessagesFiles']['ComposerPackages']      = $dir . 'ComposerPackages.i18n.php';
-$GLOBALS['wgExtensionMessagesFiles']['ComposerPackagesAlias'] = $dir . 'ComposerPackages.alias.php';
+$GLOBALS['wgExtensionMessagesFiles']['ComposerPackages']      = __DIR__ . '/' . 'ComposerPackages.i18n.php';
+$GLOBALS['wgExtensionMessagesFiles']['ComposerPackagesAlias'] = __DIR__ . '/' . 'ComposerPackages.alias.php';
 
 // Special page
 $GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\ListComposerPackages';
@@ -31,6 +29,7 @@ $GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\
 // Api
 $GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';
 
+// Extension services registration
 $GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
 
 	$directory = $GLOBALS['IP'];

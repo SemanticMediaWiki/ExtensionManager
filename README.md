@@ -6,7 +6,7 @@ An interface to access installed composer packages.
 > api.php?action=composerpackages
 
 ## Installation
-The recommended way to install this extension is through `Composer` (the Composer autoloader is used therefore a manual installation will be insufficient). Just add the following to the MediaWiki ``composer.json`` file and run the ``php composer.phar install/update`` command.
+The recommended way to install this extension is through `Composer` (A manual installation will be insufficient due to the use of the Composer autoloader). Just add the following to the MediaWiki ``composer.json`` file and run the ``php composer.phar install/update`` command.
 
 ```json
 {
