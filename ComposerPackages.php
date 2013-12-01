@@ -30,3 +30,30 @@ $GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ComposerPackages\Specials\
 
 // Api
 $GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';
+
+$GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
+
+	$directory = $GLOBALS['IP'];
+	$services  = \ComposerPackages\ServicesBuilder::getInstance();
+
+	$services->registerObject( 'FileReader', function ( $builder ) use ( $directory ) {
+		return new \ComposerPackages\PackagesFileReader( new \ComposerPackages\PackagesFile( $directory, 'composer.lock' ) );
+	} );
+
+	$services->registerObject( 'ComposerFileMapper', function ( $builder ) {
+		return new \ComposerPackages\ComposerFileMapper( $builder->newObject( 'FileReader' ) );
+	} );
+
+	$services->registerObject( 'MessageBuilder', function ( $builder ) {
+		return new \ComposerPackages\MessageBuilder( $builder->newObject( 'RequestContext' ) );
+	} );
+
+	$services->registerObject( 'TextBuilder', function ( $builder ) {
+		return new \ComposerPackages\TextBuilder(
+			$builder->newObject( 'ComposerFileMapper' ),
+			$builder->newObject( 'MessageBuilder' )
+		);
+	} );
+
+	return true;
+};

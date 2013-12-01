@@ -12,10 +12,10 @@ use InvalidArgumentException;
  *
  * @author mwjames
  */
-class ArrayMapper {
+class ComposerFileMapper {
 
 	/** @var array */
-	protected $contents = null;
+	protected $fileReader = null;
 
 	/**
 	 * Internal mapping to external reference key used by the
@@ -35,10 +35,10 @@ class ArrayMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @param array $contents
+	 * @param PackagesFileReader $fileReader
 	 */
-	public function __construct( array $contents ) {
-		$this->contents = $contents;
+	public function __construct( PackagesFileReader $fileReader ) {
+		$this->fileReader = $fileReader;
 	}
 
 	/**
@@ -56,7 +56,7 @@ class ArrayMapper {
 	 * @return array
 	 */
 	public function getPackages() {
-		return $this->getElement( 'packages', $this->contents );
+		return $this->getElement( 'packages', $this->fileReader->decodeJsonFile() );
 	}
 
 	/**

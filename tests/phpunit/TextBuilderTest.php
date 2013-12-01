@@ -3,7 +3,7 @@
 namespace ComposerPackages\Test;
 
 use ComposerPackages\TextBuilder;
-use ComposerPackages\ArrayMapper;
+use ComposerPackages\ComposerFileMapper;
 
 /**
  * @covers \ComposerPackages\TextBuilder
@@ -52,11 +52,28 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
+	public function newPackagesFileReaderMock( $contents = array() ) {
+
+		$fileReader = $this->getMockBuilder( '\ComposerPackages\PackagesFileReader' )
+			->disableOriginalConstructor()
+			->setMethods( array( 'decodeJsonFile' ) )
+			->getMock();
+
+		$fileReader->expects( $this->any() )
+			->method( 'decodeJsonFile' )
+			->will( $this->returnValue( $contents ) );
+
+		return $fileReader;
+	}
+
+	/**
+	 * @since 0.1
+	 */
 	public function newInstance( $contents = array() ) {
-
-		$mapper = new ArrayMapper( $contents );
-
-		return new TextBuilder( $mapper, $this->newMessageBuilderMock() );
+		return new TextBuilder(
+			new ComposerFileMapper( $this->newPackagesFileReaderMock( $contents ) ),
+			$this->newMessageBuilderMock()
+		);
 	}
 
 	/**

@@ -2,11 +2,7 @@
 
 namespace ComposerPackages\Specials;
 
-use ComposerPackages\PackagesFile;
-use ComposerPackages\PackagesFileReader;
-use ComposerPackages\ArrayMapper;
-use ComposerPackages\TextBuilder;
-use ComposerPackages\MessageBuilder;
+use ComposerPackages\ServicesBuilder;
 
 /**
  * Implements Special:ListComposerPackages
@@ -32,7 +28,7 @@ class ListComposerPackages extends \SpecialPage {
 
 		$this->setHeaders();
 
-		$reader = new PackagesFileReader( new PackagesFile() );
+		$reader = ServicesBuilder::getInstance()->newObject( 'FileReader' );
 
 		$this->getOutput()->addWikiText(
 			$reader->canReadFile() ? $this->canRead( $reader ) : $this->canNotRead( $reader )
@@ -45,8 +41,9 @@ class ListComposerPackages extends \SpecialPage {
 	 */
 	protected function canRead( $reader ) {
 
-		$mapper  = new ArrayMapper( $reader->decodeJsonFile() );
-		$builder = new TextBuilder( $mapper, new MessageBuilder( $this->getContext() ) );
+		$builder = ServicesBuilder::getInstance()->newObject( 'TextBuilder', array(
+			'RequestContext' => $this->getContext()
+		) );
 
 		return $builder->getText();
 	}

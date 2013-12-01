@@ -2,8 +2,7 @@
 
 namespace ComposerPackages\Api;
 
-use ComposerPackages\PackagesFile;
-use ComposerPackages\PackagesFileReader;
+use ComposerPackages\ServicesBuilder;
 
 use ApiBase;
 
@@ -24,7 +23,7 @@ class ComposerPackages extends ApiBase {
 	 */
 	public function execute() {
 
-		$reader = new PackagesFileReader( new PackagesFile() );
+		$reader = ServicesBuilder::getInstance()->newObject( 'FileReader' );
 
 		if ( !$reader->canReadFile() ) {
 			$this->dieUsageMsg( array( 'illegal-filename' ) );
