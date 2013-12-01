@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mwjames/composer-packages.png?branch=master)](https://travis-ci.org/mwjames/composer-packages)
+
 A simple extension that deploys a <code>Special:ListComposerPackages</code> page in order to display information about which composer packages are installed and used within MediaWiki.
 
 ## WebApi
