@@ -2,7 +2,7 @@
 
 namespace ComposerPackages\Api;
 
-use ComposerPackages\ServicesBuilder;
+use ServiceRegistry\ServiceRegistry;
 
 use ApiBase;
 
@@ -23,14 +23,10 @@ class ComposerPackages extends ApiBase {
 	 */
 	public function execute() {
 
-		$reader = ServicesBuilder::getInstance()->newObject( 'FileReader' );
+		$reader = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'FileReader' );
 
 		if ( !$reader->canReadFile() ) {
 			$this->dieUsageMsg( array( 'illegal-filename' ) );
-		};
-
-		if ( $this->getResult()->getIsRawMode() ) {
-			$this->dieUsageMsg( array( 'Format is not supported' ) );
 		};
 
 		$packages = $reader->decodeJsonFile();
@@ -41,7 +37,12 @@ class ComposerPackages extends ApiBase {
 	/**
 	 * @since 0.1
 	 */
-	protected function runFormatter( &$packages ) {
+	protected function runFormatter( $packages ) {
+
+		if ( $this->getResult()->getIsRawMode() ) {
+			$this->dieUsageMsg( array( 'Selected format is not supported' ) );
+		};
+
 		return $packages;
 	}
 

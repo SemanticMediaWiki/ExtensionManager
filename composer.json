@@ -14,8 +14,15 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3.2"
+		"php": ">=5.3.2",
+		"mwjames/service-registry": "~0.1"
 	},
+  "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/mwjames/service-registry"
+        }
+    ],
 	"autoload": {
 		"files" : [
 			"ComposerPackages.php"

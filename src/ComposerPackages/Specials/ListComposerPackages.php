@@ -2,7 +2,7 @@
 
 namespace ComposerPackages\Specials;
 
-use ComposerPackages\ServicesBuilder;
+use ServiceRegistry\ServiceRegistry;
 
 /**
  * Implements Special:ListComposerPackages
@@ -28,10 +28,10 @@ class ListComposerPackages extends \SpecialPage {
 
 		$this->setHeaders();
 
-		$reader = ServicesBuilder::getInstance()->newObject( 'FileReader' );
+		$reader = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'FileReader' );
 
 		$this->getOutput()->addWikiText(
-			$reader->canReadFile() ? $this->canRead( $reader ) : $this->canNotRead( $reader )
+			$reader->canReadFile() ? $this->buildText() : $this->canNotRead( $reader )
 		);
 
 	}
@@ -39,9 +39,9 @@ class ListComposerPackages extends \SpecialPage {
 	/**
 	 * @since 0.1
 	 */
-	protected function canRead( $reader ) {
+	protected function buildText() {
 
-		$builder = ServicesBuilder::getInstance()->newObject( 'TextBuilder', array(
+		$builder = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'TextBuilder', array(
 			'RequestContext' => $this->getContext()
 		) );
 

@@ -18,7 +18,7 @@ The recommended way to install this extension is through `Composer`. Just add th
 	"repositories": [
 		{
 			"type": "vcs",
-			"url":  "git@github.com:mwjames/composer-packages.git"
+			"url":  "https://github.com/mwjames/composer-packages"
 		}
 	],
 	"minimum-stability" : "dev"
