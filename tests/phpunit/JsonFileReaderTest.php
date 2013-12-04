@@ -2,11 +2,11 @@
 
 namespace ComposerPackages\Test;
 
-use ComposerPackages\ComposerFileReader;
-use ComposerPackages\PackagesFile;
+use ComposerPackages\JsonFileReader;
+use ComposerPackages\FileLocator;
 
 /**
- * @covers \ComposerPackages\ComposerFileReader
+ * @covers \ComposerPackages\JsonFileReader
  *
  * @group ComposerPackages
  *
@@ -15,7 +15,7 @@ use ComposerPackages\PackagesFile;
  *
  * @author mwjames
  */
-class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
+class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 
 	protected $mockContent = '{
 		"packages": [
@@ -35,8 +35,8 @@ class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function newInstance( $dir = null, $file = null ) {
-		return new ComposerFileReader( new PackagesFile( $dir, $file ) );
+	public function newInstance( $path = null, $file = null ) {
+		return new JsonFileReader( new FileLocator( $path, $file ) );
 	}
 
 	/**
@@ -44,8 +44,8 @@ class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newFileReaderMock( $exists = true, $contents = '' ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
-			->setConstructorArgs( array( new PackagesFile( 'Foo' ) ) )
+		$fileReader = $this->getMockBuilder( '\ComposerPackages\JsonFileReader' )
+			->setConstructorArgs( array( new FileLocator( 'Foo' ) ) )
 			->setMethods( array( 'assertFileExists', 'fetchFileContents' ) )
 			->getMock();
 
@@ -64,7 +64,7 @@ class ComposerFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\ComposerFileReader', $this->newInstance() );
+		$this->assertInstanceOf( '\ComposerPackages\JsonFileReader', $this->newInstance() );
 	}
 
 	/**

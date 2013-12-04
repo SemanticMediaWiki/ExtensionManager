@@ -6,7 +6,7 @@ use ServiceRegistry\ServiceContainer;
 use Html;
 
 /**
- * @see ServiceRegistry::ServiceContainer
+ * Implements ServiceContainer to specify available services
  *
  * @licence GNU GPL v2+
  * @since 0.1
@@ -18,11 +18,11 @@ class ServicesContainer implements ServiceContainer {
 	/**
 	 * @since 0.1
 	 *
-	 * @param string $directory
+	 * @param string $path
 	 * @param string $file
 	 */
-	public function __construct( $directory, $file ) {
-		$this->directory = $directory;
+	public function __construct( $path, $file ) {
+		$this->path = $path;
 		$this->file = $file;
 	}
 
@@ -35,13 +35,13 @@ class ServicesContainer implements ServiceContainer {
 	 */
 	public function loadAllDefinitions() {
 
-		$directory = $this->directory;
+		$path = $this->path;
 		$file = $this->file;
 
-		return function( $builder ) use ( $directory, $file ) {
+		return function( $builder ) use ( $path, $file ) {
 
-			$builder->registerObject( 'FileReader', function ( $builder ) use ( $directory, $file ) {
-				return new ComposerFileReader( new PackagesFile( $directory, $file ) );
+			$builder->registerObject( 'FileReader', function ( $builder ) use ( $path, $file ) {
+				return new JsonFileReader( new FileLocator( $path, $file ) );
 			} );
 
 			$builder->registerObject( 'ContentMapper', function ( $builder ) {

@@ -2,10 +2,10 @@
 
 namespace ComposerPackages\Test;
 
-use ComposerPackages\PackagesFile;
+use ComposerPackages\FileLocator;
 
 /**
- * @covers \ComposerPackages\PackagesFile
+ * @covers \ComposerPackages\FileLocator
  *
  * @group ComposerPackages
  *
@@ -14,7 +14,7 @@ use ComposerPackages\PackagesFile;
  *
  * @author mwjames
  */
-class PackagesFileTest extends \PHPUnit_Framework_TestCase {
+class FileLocatorTest extends \PHPUnit_Framework_TestCase {
 
 	/** @var boolean */
 	private $requiredIPSetting = false;
@@ -48,14 +48,14 @@ class PackagesFileTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function newInstance( $dir = null, $file = null ) {
-		return new PackagesFile( $dir, $file );
+		return new FileLocator( $dir, $file );
 	}
 
 	/**
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\PackagesFile', $this->newInstance() );
+		$this->assertInstanceOf( '\ComposerPackages\FileLocator', $this->newInstance() );
 	}
 
 	/**

@@ -13,14 +13,14 @@ use UnexpectedValueException;
  *
  * @author mwjames
  */
-class ComposerFileReader {
+class JsonFileReader {
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param PackagesFile $sourceFile
+	 * @param FileLocator $sourceFile
 	 */
-	public function __construct( PackagesFile $sourceFile ) {
+	public function __construct( FileLocator $sourceFile ) {
 		$this->sourceFile = $sourceFile;
 	}
 

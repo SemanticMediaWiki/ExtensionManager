@@ -35,9 +35,9 @@ class ComposerContentMapper {
 	/**
 	 * @since 0.1
 	 *
-	 * @param ComposerFileReader $fileReader
+	 * @param JsonFileReader $fileReader
 	 */
-	public function __construct( ComposerFileReader $fileReader ) {
+	public function __construct( JsonFileReader $fileReader ) {
 		$this->fileReader = $fileReader;
 	}
 

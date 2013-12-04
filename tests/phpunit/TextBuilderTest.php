@@ -69,9 +69,9 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function newComposerFileReaderMock( $contents = array() ) {
+	public function newFileReaderMock( $contents = array() ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\ComposerFileReader' )
+		$fileReader = $this->getMockBuilder( '\ComposerPackages\JsonFileReader' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'decodeJsonFile' ) )
 			->getMock();
@@ -88,7 +88,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newInstance( $contents = array() ) {
 		return new TextBuilder(
-			new ComposerContentMapper( $this->newComposerFileReaderMock( $contents ) ),
+			new ComposerContentMapper( $this->newFileReaderMock( $contents ) ),
 			$this->newMessageBuilderMock(),
 			$this->newHtmlFormatterMock()
 		);

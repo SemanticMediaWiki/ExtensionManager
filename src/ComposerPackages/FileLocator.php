@@ -11,7 +11,7 @@ namespace ComposerPackages;
  *
  * @author mwjames
  */
-class PackagesFile {
+class FileLocator {
 
 	/**
 	 * @since 0.1
