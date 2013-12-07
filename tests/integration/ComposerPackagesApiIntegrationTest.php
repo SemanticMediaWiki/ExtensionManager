@@ -2,7 +2,7 @@
 
 namespace ExtensionManager\Test;
 
-use ExtensionManager\Api\ComposerPackages;
+use ExtensionManager\MediaWiki\Api\ComposerPackages;
 
 use RequestContext;
 use FauxRequest;
@@ -10,7 +10,7 @@ use Language;
 use ApiMain;
 
 /**
- * @covers \ExtensionManager\Api\ComposerPackages
+ * @covers \ExtensionManager\MediaWiki\Api\ComposerPackages
  *
  * @group ComposerPackages
  *

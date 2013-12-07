@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtensionManager\Specials;
+namespace ExtensionManager\MediaWiki\Specials;
 
 use ServiceRegistry\ServiceRegistry;
 

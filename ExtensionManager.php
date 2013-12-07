@@ -1,13 +1,10 @@
 <?php
 
-use ServiceRegistry\ServiceRegistry;
-use ExtensionManager\ServicesContainer;
-
 if ( defined( 'EXTENSION_MANAGER_VERSION' ) ) {
 	return 1;
 }
 
-define( 'EXTENSION_MANAGER_VERSION', '0.1' );
+define( 'EXTENSION_MANAGER_VERSION', '0.1 alpha' );
 
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	include_once( __DIR__ . '/vendor/autoload.php' );
@@ -28,12 +25,12 @@ if ( defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManagerAlias'] = __DIR__ . '/' . 'ExtensionManager.alias.php';
 
 	// Special page
-	$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ExtensionManager\Specials\ListComposerPackages';
+	$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ExtensionManager\MediaWiki\Specials\ListComposerPackages';
 
 	// Api
-	$GLOBALS['wgAPIModules']['composerpackages'] = 'ExtensionManager\Api\ComposerPackages';
+	$GLOBALS['wgAPIModules']['composerpackages'] = 'ExtensionManager\MediaWiki\Api\ComposerPackages';
 
-	ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
-		new ServicesContainer( __DIR__, 'composer.lock' )
+	ServiceRegistry\ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
+		new ExtensionManager\ServicesContainer( __DIR__, 'composer.lock' )
 	);
 }

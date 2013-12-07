@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtensionManager\Api;
+namespace ExtensionManager\MediaWiki\Api;
 
 use ExtensionManager\JsonFileReader;
 use ServiceRegistry\ServiceRegistry;
