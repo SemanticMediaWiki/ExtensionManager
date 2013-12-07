@@ -15,8 +15,11 @@ if ( defined( 'COMPOSERPACKAGES_VERSION' ) ) {
 
 define( 'COMPOSERPACKAGES_VERSION', '0.1' );
 
-if ( defined( 'MEDIAWIKI' ) ) {
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	include_once( __DIR__ . '/vendor/autoload.php' );
+}
 
+if ( defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['wgExtensionCredits']['other'][] = array(
 		'path'            => __FILE__,
 		'name'            => 'ComposerPackages',
@@ -39,5 +42,4 @@ if ( defined( 'MEDIAWIKI' ) ) {
 	ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
 		new ServicesContainer( __DIR__, 'composer.lock' )
 	);
-
 }
