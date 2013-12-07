@@ -1,8 +1,8 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\Api\ComposerPackages;
+use ExtensionManager\Api\ComposerPackages;
 
 use RequestContext;
 use FauxRequest;
@@ -10,7 +10,7 @@ use Language;
 use ApiMain;
 
 /**
- * @covers \ComposerPackages\Api\ComposerPackages
+ * @covers \ExtensionManager\Api\ComposerPackages
  *
  * @group ComposerPackages
  *

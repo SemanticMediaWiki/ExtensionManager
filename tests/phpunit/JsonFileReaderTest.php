@@ -1,12 +1,12 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\JsonFileReader;
-use ComposerPackages\FileLocator;
+use ExtensionManager\JsonFileReader;
+use ExtensionManager\FileLocator;
 
 /**
- * @covers \ComposerPackages\JsonFileReader
+ * @covers \ExtensionManager\JsonFileReader
  *
  * @group ComposerPackages
  *
@@ -40,11 +40,11 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @since 0.1
+	 * @return JsonFileReader
 	 */
 	public function newFileReaderMock( $exists = true, $contents = '' ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\JsonFileReader' )
+		$fileReader = $this->getMockBuilder( '\ExtensionManager\JsonFileReader' )
 			->setConstructorArgs( array( new FileLocator( 'Foo' ) ) )
 			->setMethods( array( 'assertFileExists', 'fetchFileContents' ) )
 			->getMock();
@@ -64,7 +64,7 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\JsonFileReader', $this->newInstance() );
+		$this->assertInstanceOf( '\ExtensionManager\JsonFileReader', $this->newInstance() );
 	}
 
 	/**

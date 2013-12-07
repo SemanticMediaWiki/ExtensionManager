@@ -1,6 +1,6 @@
 <?php
 
-namespace ComposerPackages;
+namespace ExtensionManager;
 
 /**
  * Represents the source file and by convention is using composer.lock

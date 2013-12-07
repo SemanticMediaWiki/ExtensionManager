@@ -25,10 +25,10 @@
     ],
 	"autoload": {
 		"files" : [
-			"ComposerPackages.php"
+			"ExtensionManager.php"
 		],
 		"psr-0": {
-			"ComposerPackages\\": "src/"
+			"ExtensionManager\\": "src/"
 		}
 	}
 }

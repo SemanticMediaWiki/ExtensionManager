@@ -1,6 +1,6 @@
 <?php
 
-namespace ComposerPackages\Specials;
+namespace ExtensionManager\Specials;
 
 use ServiceRegistry\ServiceRegistry;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace ComposerPackages\Api;
+namespace ExtensionManager\Api;
 
-use ComposerPackages\JsonFileReader;
+use ExtensionManager\JsonFileReader;
 use ServiceRegistry\ServiceRegistry;
 
 use ApiBase;
@@ -101,7 +101,7 @@ class ComposerPackages extends ApiBase {
 	 * @return string
 	 */
 	public function getVersion() {
-		return __CLASS__ . '-' . COMPOSERPACKAGES_VERSION;
+		return __CLASS__ . '-' . EXTENSION_MANAGER_VERSION;
 	}
 
 }

@@ -13,10 +13,10 @@
          strict="true"
          verbose="true">
     <testsuites>
-        <testsuite name="ComposerPackages">
+        <testsuite name="ExtensionManager">
             <directory>tests/phpunit</directory>
         </testsuite>
-        <testsuite name="ComposerPackagesIntegration">
+        <testsuite name="ExtensionManagerIntegration">
             <directory>tests/integration</directory>
         </testsuite>
     </testsuites>

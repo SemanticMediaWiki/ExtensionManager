@@ -1,12 +1,12 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\TextBuilder;
-use ComposerPackages\ComposerContentMapper;
+use ExtensionManager\TextBuilder;
+use ExtensionManager\ComposerContentMapper;
 
 /**
- * @covers \ComposerPackages\TextBuilder
+ * @covers \ExtensionManager\TextBuilder
  *
  * @group ComposerPackages
  *
@@ -37,7 +37,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newMessageBuilderMock() {
 
-		$messageBuilder = $this->getMockBuilder( '\ComposerPackages\MessageBuilder' )
+		$messageBuilder = $this->getMockBuilder( '\ExtensionManager\MessageBuilder' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'getText' ) )
 			->getMock();
@@ -54,7 +54,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newHtmlFormatterMock() {
 
-		$messageBuilder = $this->getMockBuilder( '\ComposerPackages\HtmlFormatter' )
+		$messageBuilder = $this->getMockBuilder( '\ExtensionManager\HtmlFormatter' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'createElement' ) )
 			->getMock();
@@ -71,7 +71,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newFileReaderMock( $contents = array() ) {
 
-		$fileReader = $this->getMockBuilder( '\ComposerPackages\JsonFileReader' )
+		$fileReader = $this->getMockBuilder( '\ExtensionManager\JsonFileReader' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'decodeJsonFile' ) )
 			->getMock();
@@ -98,7 +98,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\TextBuilder', $this->newInstance() );
+		$this->assertInstanceOf( '\ExtensionManager\TextBuilder', $this->newInstance() );
 	}
 
 	/**

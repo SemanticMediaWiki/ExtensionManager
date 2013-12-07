@@ -1,6 +1,6 @@
 <?php
 
-namespace ComposerPackages;
+namespace ExtensionManager;
 
 use InvalidArgumentException;
 use UnexpectedValueException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ComposerPackages;
+namespace ExtensionManager;
 
 /**
  * Class responsible for building a text output

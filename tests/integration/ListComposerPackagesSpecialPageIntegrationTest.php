@@ -1,8 +1,8 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\Specials\ListComposerPackages;
+use ExtensionManager\Specials\ListComposerPackages;
 
 use SpecialPageFactory;
 use RequestContext;
@@ -10,7 +10,7 @@ use FauxRequest;
 use Language;
 
 /**
- * @covers \ComposerPackages\Specials\ListComposerPackages
+ * @covers \ExtensionManager\Specials\ListComposerPackages
  *
  * @group ComposerPackages
  *

@@ -1,11 +1,11 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\MessageBuilder;
+use ExtensionManager\MessageBuilder;
 
 /**
- * @covers \ComposerPackages\MessageBuilder
+ * @covers \ExtensionManager\MessageBuilder
  *
  * @group ComposerPackages
  *
@@ -50,7 +50,7 @@ class MessageBuilderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\MessageBuilder', $this->newInstance() );
+		$this->assertInstanceOf( '\ExtensionManager\MessageBuilder', $this->newInstance() );
 	}
 
 	/**

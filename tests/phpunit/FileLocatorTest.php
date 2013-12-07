@@ -1,11 +1,11 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\FileLocator;
+use ExtensionManager\FileLocator;
 
 /**
- * @covers \ComposerPackages\FileLocator
+ * @covers \ExtensionManager\FileLocator
  *
  * @group ComposerPackages
  *
@@ -55,7 +55,7 @@ class FileLocatorTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\FileLocator', $this->newInstance() );
+		$this->assertInstanceOf( '\ExtensionManager\FileLocator', $this->newInstance() );
 	}
 
 	/**

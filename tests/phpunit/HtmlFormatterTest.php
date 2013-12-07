@@ -1,11 +1,11 @@
 <?php
 
-namespace ComposerPackages\Test;
+namespace ExtensionManager\Test;
 
-use ComposerPackages\HtmlFormatter;
+use ExtensionManager\HtmlFormatter;
 
 /**
- * @covers \ComposerPackages\HtmlFormatter
+ * @covers \ExtensionManager\HtmlFormatter
  *
  * @group ComposerPackages
  *
@@ -47,7 +47,7 @@ class HtmlFormatterTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ComposerPackages\HtmlFormatter', $this->newInstance() );
+		$this->assertInstanceOf( '\ExtensionManager\HtmlFormatter', $this->newInstance() );
 	}
 
 	/**
