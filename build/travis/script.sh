@@ -6,7 +6,7 @@ cd ../phase3/extensions/ExtensionManager
 
 if [ "$MW-$DBTYPE" == "master-mysql" ]
 then
-	phpunit --coverage-clover ../../extensions/ExtensionManager/build/logs/clover.xml
+	phpunit -c ../../extensions/ExtensionManager/phpunit.xml.dist --coverage-clover ../../extensions/ExtensionManager/build/logs/clover.xml
 else
-	phpunit
+	phpunit -c ../../extensions/ExtensionManager/phpunit.xml.dist
 fi
