@@ -36,14 +36,8 @@ if ( defined( 'MEDIAWIKI' ) ) {
 	// Api
 	$GLOBALS['wgAPIModules']['composerpackages'] = 'ComposerPackages\Api\ComposerPackages';
 
-	// Services registration
-	$GLOBALS['wgExtensionFunctions']['composerpackages'] = function() {
-
-		ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
-			new ServicesContainer( $GLOBALS['IP'], 'composer.lock' )
-		);
-
-		return true;
-	};
+	ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
+		new ServicesContainer( __DIR__, 'composer.lock' )
+	);
 
 }

@@ -2,6 +2,7 @@
 
 namespace ComposerPackages\Api;
 
+use ComposerPackages\JsonFileReader;
 use ServiceRegistry\ServiceRegistry;
 
 use ApiBase;
@@ -23,6 +24,9 @@ class ComposerPackages extends ApiBase {
 	 */
 	public function execute() {
 
+		/**
+		 * @var JsonFileReader $reader
+		 */
 		$reader = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'FileReader' );
 
 		if ( !$reader->canReadFile() ) {

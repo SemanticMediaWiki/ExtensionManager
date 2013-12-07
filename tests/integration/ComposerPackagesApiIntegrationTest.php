@@ -21,17 +21,12 @@ use ApiMain;
  */
 class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 
-	/**
-	 * @return 0.1
-	 */
 	protected function setUp() {
-
 		if ( !defined( 'MEDIAWIKI' ) ) {
 			$this->markTestSkipped( 'MediaWiki is not available' );
 		}
 
 		parent::setUp();
-
 	}
 
 	/**
@@ -53,7 +48,6 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testExecute() {
-
 		$instance = $this->newInstance();
 
 		try {
