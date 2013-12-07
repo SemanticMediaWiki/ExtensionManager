@@ -15,6 +15,10 @@ if ( defined( 'COMPOSERPACKAGES_VERSION' ) ) {
 
 define( 'COMPOSERPACKAGES_VERSION', '0.1' );
 
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	include_once( __DIR__ . '/vendor/autoload.php' );
+}
+
 if ( defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['wgExtensionCredits']['other'][] = array(
 		'path'            => __FILE__,
