@@ -1,7 +1,9 @@
 <?php
 
-namespace ExtensionManager;
+namespace ExtensionManager\UI;
 
+use ExtensionManager\ComposerContentMapper;
+use ExtensionManager\HtmlFormatter;
 use i18n\MessageBuilder;
 
 /**
@@ -12,7 +14,7 @@ use i18n\MessageBuilder;
  *
  * @author mwjames
  */
-class TextBuilder {
+class PackageTableBuilder {
 
 	/**
 	 * @since 0.1

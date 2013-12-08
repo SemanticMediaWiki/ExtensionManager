@@ -2,11 +2,11 @@
 
 namespace ExtensionManager\Test;
 
-use ExtensionManager\TextBuilder;
+use ExtensionManager\UI\PackageTableBuilder;
 use ExtensionManager\ComposerContentMapper;
 
 /**
- * @covers ExtensionManager\TextBuilder
+ * @covers ExtensionManager\UI\PackageTableBuilder
  *
  * @group ComposerPackages
  *
@@ -15,7 +15,7 @@ use ExtensionManager\ComposerContentMapper;
  *
  * @author mwjames
  */
-class TextBuilderTest extends \PHPUnit_Framework_TestCase {
+class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 
 	protected $mockContent = array(
 		'packages' => array(
@@ -54,7 +54,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newHtmlFormatterMock() {
 
-		$messageBuilder = $this->getMockBuilder( '\ExtensionManager\HtmlFormatter' )
+		$messageBuilder = $this->getMockBuilder( 'ExtensionManager\HtmlFormatter' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'createElement' ) )
 			->getMock();
@@ -71,7 +71,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newFileReaderMock( $contents = array() ) {
 
-		$fileReader = $this->getMockBuilder( '\ExtensionManager\JsonFileReader' )
+		$fileReader = $this->getMockBuilder( 'ExtensionManager\JsonFileReader' )
 			->disableOriginalConstructor()
 			->setMethods( array( 'decodeJsonFile' ) )
 			->getMock();
@@ -87,7 +87,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function newInstance( $contents = array() ) {
-		return new TextBuilder(
+		return new PackageTableBuilder(
 			new ComposerContentMapper( $this->newFileReaderMock( $contents ) ),
 			$this->newMessageBuilderMock(),
 			$this->newHtmlFormatterMock()
@@ -98,7 +98,7 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 * @since 0.1
 	 */
 	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ExtensionManager\TextBuilder', $this->newInstance() );
+		$this->assertInstanceOf( 'ExtensionManager\UI\PackageTableBuilder', $this->newInstance() );
 	}
 
 	/**

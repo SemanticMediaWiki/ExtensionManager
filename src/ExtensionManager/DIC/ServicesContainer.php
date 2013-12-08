@@ -6,7 +6,7 @@ use ExtensionManager\ComposerContentMapper;
 use ExtensionManager\FileInfo;
 use ExtensionManager\HtmlFormatter;
 use ExtensionManager\JsonFileReader;
-use ExtensionManager\TextBuilder;
+use ExtensionManager\UI\PackageTableBuilder;
 use i18n\MediaWiki\LanguageTypes;
 use i18n\MediaWiki\MessageBuilderFactory;
 use ServiceRegistry\ServiceContainer;
@@ -70,7 +70,7 @@ class ServicesContainer implements ServiceContainer {
 			} );
 
 			$builder->registerObject( 'TextBuilder', function ( ServiceRegistry $builder ) {
-				return new TextBuilder(
+				return new PackageTableBuilder(
 					$builder->newObject( 'ContentMapper' ),
 					$builder->newObject( 'MessageBuilder' ),
 					$builder->newObject( 'HtmlFormatter' )
