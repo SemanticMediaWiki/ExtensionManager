@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/mwjames/composer-packages.png?branch=master)](https://travis-ci.org/mwjames/composer-packages)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/mwjames/composer-packages/badges/quality-score.png?s=e683de3d75d834ef510a9fe21ebdc9bceb6c4b9c)](https://scrutinizer-ci.com/g/mwjames/composer-packages/)
 
+Requires MediaWiki 1.20 or later.
+
 A simple extension that deploys a <code>Special:ListComposerPackages</code> page in order to display information about which composer packages are installed and used within MediaWiki.
 
 ## WebApi
