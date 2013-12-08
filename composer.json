@@ -1,9 +1,12 @@
 {
-	"name": "mwjames/composer-packages",
+	"name": "mediawiki/extension-manager",
 	"type": "mediawiki-extension",
-	"description": "List composer packages used within MedaiWiki",
+	"description": "Extension manager for MediaWiki",
 	"keywords": [
-		"composer"
+		"composer",
+		"mediawiki",
+		"extensions",
+		"extension management"
 	],
 	"homepage": "https://github.com/mwjames/composer-packages",
 	"license": "GPL-2.0+",
@@ -11,11 +14,19 @@
 		{
 			"name": "mwjames",
 			"homepage": "https://github.com/mwjames"
+		},
+		{
+			"name": "Jeroen De Dauw",
+			"email": "jeroendedauw@gmail.com",
+			"homepage": "http://jeroendedauw.com"
 		}
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"mwjames/service-registry": "~0.1"
+		"mwjames/service-registry": "~0.1",
+		"jeroen-de-dauw/i18n": "~0.1",
+		"jeroen-de-dauw/simple-cache": "~1.0",
+		"jeroen-de-dauw/file-fetcher": "~1.0"
 	},
 	"repositories": [
 		{
