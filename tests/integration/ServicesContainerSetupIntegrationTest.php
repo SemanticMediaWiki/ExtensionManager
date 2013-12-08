@@ -37,9 +37,6 @@ class ServicesContainerSetupIntegrationTest extends \PHPUnit_Framework_TestCase 
 			$this->assertTrue( is_callable( $signature ) );
 			$this->assertTrue( is_object( $instance->newObject( $service ) ) );
 		}
-
-		$this->assertArrayHasKey( 'filereader', $instance->getAllServices() );
-		$this->assertInstanceOf( 'ExtensionManager\JsonFileReader', $instance->newObject( 'FileReader' ) );
 	}
 
 }

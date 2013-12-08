@@ -2,6 +2,7 @@
 
 namespace ExtensionManager\MediaWiki\Specials;
 
+use ExtensionManager\DIC\ServiceAccess;
 use ServiceRegistry\ServiceRegistry;
 
 /**
@@ -25,31 +26,15 @@ class ListComposerPackages extends \SpecialPage {
 	 * @since 0.1
 	 */
 	public function execute( $par ) {
-
 		$this->setHeaders();
 
-		$reader = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'FileReader' );
+		$reader = ServiceAccess::getInstance()->newPackageTableBuilder( $this->getContext() );
 
-		$this->getOutput()->addWikiText(
-			$reader->canReadFile() ? $this->buildText() : $this->canNotRead( $reader )
-		);
-
+		$this->getOutput()->addWikiText( $reader->getText() );
 	}
 
 	/**
-	 * @since 0.1
-	 */
-	protected function buildText() {
-
-		$builder = ServiceRegistry::getInstance( 'composerpackages' )->newObject( 'TextBuilder', array(
-			'RequestContext' => $this->getContext()
-		) );
-
-		return $builder->getText();
-	}
-
-	/**
-	 * @since 0.1
+	 * TODO: use
 	 */
 	protected function canNotRead( $reader ) {
 		return $this->msg( 'composerpackages-file-not-available', $reader->getFileName() );

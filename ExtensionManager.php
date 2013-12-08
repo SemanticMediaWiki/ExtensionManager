@@ -32,8 +32,4 @@ if ( defined( 'MEDIAWIKI' ) ) {
 
 	// Api
 	$GLOBALS['wgAPIModules']['composerpackages'] = 'ExtensionManager\MediaWiki\Api\ComposerPackages';
-
-	ServiceRegistry\ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
-		new ExtensionManager\DIC\ServicesContainer( $GLOBALS['IP'], 'composer.lock' )
-	);
 }

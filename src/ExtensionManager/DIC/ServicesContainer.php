@@ -14,7 +14,13 @@ use Html;
 use ServiceRegistry\ServiceRegistry;
 
 /**
- * Implements ServiceContainer to specify available services
+ * Implements ServiceContainer to specify available services.
+ *
+ * This class is internal to the dependency injection mechanism
+ * and should not be used directly from the application. All
+ * access should happen through the ServiceAccess.
+ *
+ * No caching should be done on this level.
  *
  * @licence GNU GPL v2+
  * @since 0.1
@@ -69,7 +75,7 @@ class ServicesContainer implements ServiceContainer {
 				return new HtmlFormatter( new Html() );
 			} );
 
-			$builder->registerObject( 'TextBuilder', function ( ServiceRegistry $builder ) {
+			$builder->registerObject( 'packageTableHtmlBuilder', function ( ServiceRegistry $builder ) {
 				return new PackageTableBuilder(
 					$builder->newObject( 'ContentMapper' ),
 					$builder->newObject( 'MessageBuilder' ),
