@@ -3,7 +3,7 @@
 namespace ExtensionManager\Test;
 
 use ExtensionManager\JsonFileReader;
-use ExtensionManager\FileLocator;
+use ExtensionManager\FileInfo;
 
 /**
  * @covers \ExtensionManager\JsonFileReader
@@ -35,17 +35,16 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function newInstance( $path = null, $file = null ) {
-		return new JsonFileReader( new FileLocator( $path, $file ) );
+	public function newInstance( $path, $file ) {
+		return new JsonFileReader( new FileInfo( $path, $file ) );
 	}
 
 	/**
 	 * @return JsonFileReader
 	 */
 	public function newFileReaderMock( $exists = true, $contents = '' ) {
-
 		$fileReader = $this->getMockBuilder( '\ExtensionManager\JsonFileReader' )
-			->setConstructorArgs( array( new FileLocator( 'Foo' ) ) )
+			->setConstructorArgs( array( new FileInfo( 'Foo', 'composer.json' ) ) )
 			->setMethods( array( 'assertFileExists', 'fetchFileContents' ) )
 			->getMock();
 
@@ -63,13 +62,6 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function testCanConstruct() {
-		$this->assertInstanceOf( '\ExtensionManager\JsonFileReader', $this->newInstance() );
-	}
-
-	/**
-	 * @since 0.1
-	 */
 	public function testCanReadFile() {
 		$this->assertTrue( $this->newFileReaderMock( true )->canReadFile() );
 		$this->assertFalse( $this->newFileReaderMock( false )->canReadFile() );
@@ -78,21 +70,12 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @since 0.1
 	 */
-	public function testGetFileName() {
-		$this->assertInternalType( 'string', $this->newInstance()->getFileName() );
-	}
-
-	/**
-	 * @since 0.1
-	 */
 	public function testDecodeJsonFile() {
-
 		$this->assertInternalType(
 			'array',
 			$this->newFileReaderMock( true, $this->mockContent )->decodeJsonFile(),
 			'Asserts that decodeJsonFile() return an array'
 		);
-
 	}
 
 	/**

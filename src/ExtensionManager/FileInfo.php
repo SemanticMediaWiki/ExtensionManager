@@ -2,6 +2,8 @@
 
 namespace ExtensionManager;
 
+use InvalidArgumentException;
+
 /**
  * Represents the source file and by convention is using composer.lock
  * as default file
@@ -11,15 +13,25 @@ namespace ExtensionManager;
  *
  * @author mwjames
  */
-class FileLocator {
+class FileInfo {
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param string|null $directory
-	 * @param string|null $fileName
+	 * @param string $directory
+	 * @param string $fileName
+	 *
+	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $directory = null, $fileName = null ) {
+	public function __construct( $directory, $fileName ) {
+		if ( !is_string( $directory ) ) {
+			throw new InvalidArgumentException( '$directory needs to be a string' );
+		}
+
+		if ( !is_string( $fileName ) ) {
+			throw new InvalidArgumentException( '$fileName needs to be a string' );
+		}
+
 		$this->directory = $directory;
 		$this->fileName = $fileName;
 	}
@@ -30,7 +42,7 @@ class FileLocator {
 	 * @return string
 	 */
 	public function getFileName() {
-		return $this->fileName === null ? 'composer.lock' : $this->fileName;
+		return $this->fileName;
 	}
 
 	/**
@@ -39,7 +51,7 @@ class FileLocator {
 	 * @return string
 	 */
 	public function getDirectory() {
-		return $this->directory === null ? $GLOBALS['IP'] : $this->directory;
+		return $this->directory;
 	}
 
 	/**

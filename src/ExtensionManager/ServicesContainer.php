@@ -42,7 +42,7 @@ class ServicesContainer implements ServiceContainer {
 		return function( ServiceRegistry $builder ) use ( $path, $file ) {
 
 			$builder->registerObject( 'FileReader', function ( ServiceRegistry $builder ) use ( $path, $file ) {
-				return new JsonFileReader( new FileLocator( $path, $file ) );
+				return new JsonFileReader( new FileInfo( $path, $file ) );
 			} );
 
 			$builder->registerObject( 'ContentMapper', function ( ServiceRegistry $builder ) {

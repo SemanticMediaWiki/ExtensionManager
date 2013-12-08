@@ -5,8 +5,6 @@ namespace ExtensionManager;
 use Html;
 
 /**
- * Provides access to the Message object
- *
  * @licence GNU GPL v2+
  * @since 0.1
  *
