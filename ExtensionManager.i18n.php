@@ -1,20 +1,15 @@
 <?php
 
-/**
- * Internationalization file for the
- *
- * @author mwjames
- */
-
 $messages = array();
 
 /**
  * @author mwjames
  */
 $messages['en'] = array(
+	'extension-manager-description' => 'Extension Manager',
+
 	'special-listcomposerpackages'  => 'Composer packages',
 	'listcomposerpackages' => 'Composer packages',
-	'composerpackages-desc' => 'Composer packages',
 	'composerpackages-intro' => 'Composer writes the list of the installed packages into a lock file. To update the packages, use the composer <code>update</code> command.',
 	'composerpackages-file-not-available' => 'The file ($1) is not available for the current configuration or setup. Running <code>composer install</code> from the MediaWiki directory is requiered in order to display installed packages.',
 	'composerpackages-table-header' => 'Installed packages',
@@ -29,5 +24,5 @@ $messages['en'] = array(
  * @author mwjames
  */
 $messages['qqq'] = array(
-	'composerpackages-desc' => '{{desc}}',
+	'extension-manager-description' => '{{desc}}',
 );

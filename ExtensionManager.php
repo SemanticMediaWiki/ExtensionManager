@@ -15,9 +15,12 @@ if ( defined( 'MEDIAWIKI' ) ) {
 		'path'            => __FILE__,
 		'name'            => 'Extension Manager',
 		'version'         => EXTENSION_MANAGER_VERSION,
-		'author'          => array( 'mwjames' ),
-		'url'             => 'https://github.com/mwjames/composer-packages',
-		'descriptionmsg'  => 'composerpackages-desc',
+		'author'          => array(
+			'mwjames',
+			'Jeroen De Dauw'
+		),
+		// TODO: url
+		'descriptionmsg'  => 'extension-manager-description',
 	);
 
 	// Message class
