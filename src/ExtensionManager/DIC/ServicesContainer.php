@@ -1,7 +1,13 @@
 <?php
 
-namespace ExtensionManager;
+namespace ExtensionManager\DIC;
 
+use ExtensionManager\ComposerContentMapper;
+use ExtensionManager\FileInfo;
+use ExtensionManager\HtmlFormatter;
+use ExtensionManager\JsonFileReader;
+use ExtensionManager\MessageBuilder;
+use ExtensionManager\TextBuilder;
 use ServiceRegistry\ServiceContainer;
 use Html;
 use ServiceRegistry\ServiceRegistry;

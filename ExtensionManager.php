@@ -34,6 +34,6 @@ if ( defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['wgAPIModules']['composerpackages'] = 'ExtensionManager\MediaWiki\Api\ComposerPackages';
 
 	ServiceRegistry\ServiceRegistry::getInstance( 'composerpackages' )->registerContainer(
-		new ExtensionManager\ServicesContainer( __DIR__, 'composer.lock' )
+		new ExtensionManager\DIC\ServicesContainer( __DIR__, 'composer.lock' )
 	);
 }
