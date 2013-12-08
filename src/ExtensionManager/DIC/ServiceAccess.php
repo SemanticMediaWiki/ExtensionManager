@@ -35,7 +35,9 @@ class ServiceAccess {
 	}
 
 	private static function newServiceRegistry() {
-		return new ServiceRegistry( new ServicesContainer( $GLOBALS['IP'], 'composer.lock' ) );
+		$dir = defined( 'MW_PHPUNIT_TEST' ) ? __DIR__ . '/../../../' : $GLOBALS['IP'];
+
+		return new ServiceRegistry( new ServicesContainer( $dir, 'composer.lock' ) );
 	}
 
 }
