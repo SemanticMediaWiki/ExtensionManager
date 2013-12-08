@@ -2,6 +2,8 @@
 
 namespace ExtensionManager;
 
+use i18n\MessageBuilder;
+
 /**
  * Class responsible for building a text output
  *
@@ -38,14 +40,14 @@ class TextBuilder {
 	 * @since 0.1
 	 */
 	protected function getInfo() {
-		return $this->messageBuilder->getText( 'composerpackages-intro' );
+		return $this->messageBuilder->msgText( 'composerpackages-intro' );
 	}
 
 	/**
 	 * @since 0.1
 	 */
 	protected function getTableSection() {
-		return $this->htmlFormatter->createElement( 'h2', $this->messageBuilder->getText( 'composerpackages-table-header' ) );
+		return $this->htmlFormatter->createElement( 'h2', $this->messageBuilder->msgText( 'composerpackages-table-header' ) );
 	}
 
 	/**
@@ -67,11 +69,11 @@ class TextBuilder {
 		$out = '';
 
 		$out .= $this->htmlFormatter->createElement( 'tr',
-			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-package' ) ) .
-			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-type' ) ) .
-			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-version' ) ) .
-			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-time' ) ) .
-			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->getText( 'composerpackages-table-header-dependencies' ) )
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->msgText( 'composerpackages-table-header-package' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->msgText( 'composerpackages-table-header-type' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->msgText( 'composerpackages-table-header-version' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->msgText( 'composerpackages-table-header-time' ) ) .
+			$this->htmlFormatter->createElement( 'th', $this->messageBuilder->msgText( 'composerpackages-table-header-dependencies' ) )
 		);
 
 		foreach ( $this->mapper->getPackages() as $package ) {

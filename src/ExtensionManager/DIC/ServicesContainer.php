@@ -6,8 +6,9 @@ use ExtensionManager\ComposerContentMapper;
 use ExtensionManager\FileInfo;
 use ExtensionManager\HtmlFormatter;
 use ExtensionManager\JsonFileReader;
-use ExtensionManager\MessageBuilder;
 use ExtensionManager\TextBuilder;
+use i18n\MediaWiki\LanguageTypes;
+use i18n\MediaWiki\MessageBuilderFactory;
 use ServiceRegistry\ServiceContainer;
 use Html;
 use ServiceRegistry\ServiceRegistry;
@@ -56,7 +57,12 @@ class ServicesContainer implements ServiceContainer {
 			} );
 
 			$builder->registerObject( 'MessageBuilder', function ( ServiceRegistry $builder ) {
-				return new MessageBuilder( $builder->newObject( 'RequestContext' ) );
+				$factory = new MessageBuilderFactory();
+
+				return $factory->newMessageBuilder(
+					$builder->newObject( 'RequestContext' ),
+					LanguageTypes::INTERFACE_LANGUAGE
+				);
 			} );
 
 			$builder->registerObject( 'HtmlFormatter', function ( ServiceRegistry $builder ) {

@@ -10,7 +10,7 @@ use Language;
 use ApiMain;
 
 /**
- * @covers \ExtensionManager\MediaWiki\Api\ComposerPackages
+ * @covers ExtensionManager\MediaWiki\Api\ComposerPackages
  *
  * @group ComposerPackages
  *

@@ -6,7 +6,7 @@ use ExtensionManager\TextBuilder;
 use ExtensionManager\ComposerContentMapper;
 
 /**
- * @covers \ExtensionManager\TextBuilder
+ * @covers ExtensionManager\TextBuilder
  *
  * @group ComposerPackages
  *
@@ -37,13 +37,13 @@ class TextBuilderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function newMessageBuilderMock() {
 
-		$messageBuilder = $this->getMockBuilder( '\ExtensionManager\MessageBuilder' )
+		$messageBuilder = $this->getMockBuilder( 'i18n\MessageBuilder' )
 			->disableOriginalConstructor()
-			->setMethods( array( 'getText' ) )
+			->setMethods( array( 'msgText' ) )
 			->getMock();
 
 		$messageBuilder->expects( $this->any() )
-			->method( 'getText' )
+			->method( 'msgText' )
 			->will( $this->returnValue( 'Foo' ) );
 
 		return $messageBuilder;

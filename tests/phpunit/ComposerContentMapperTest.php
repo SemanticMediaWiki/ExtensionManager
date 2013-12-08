@@ -5,7 +5,7 @@ namespace ExtensionManager\Test;
 use ExtensionManager\ComposerContentMapper;
 
 /**
- * @covers \ExtensionManager\ComposerContentMapper
+ * @covers ExtensionManager\ComposerContentMapper
  *
  * @group ComposerPackages
  *

@@ -5,7 +5,7 @@ namespace ExtensionManager\Test;
 use ExtensionManager\HtmlFormatter;
 
 /**
- * @covers \ExtensionManager\HtmlFormatter
+ * @covers ExtensionManager\HtmlFormatter
  *
  * @group ComposerPackages
  *

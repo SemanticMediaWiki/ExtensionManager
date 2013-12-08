@@ -10,7 +10,7 @@ use FauxRequest;
 use Language;
 
 /**
- * @covers \ExtensionManager\MediaWiki\Specials\ListComposerPackages
+ * @covers ExtensionManager\MediaWiki\Specials\ListComposerPackages
  *
  * @group ComposerPackages
  *

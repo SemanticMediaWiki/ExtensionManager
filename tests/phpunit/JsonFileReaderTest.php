@@ -6,7 +6,7 @@ use ExtensionManager\JsonFileReader;
 use ExtensionManager\FileInfo;
 
 /**
- * @covers \ExtensionManager\JsonFileReader
+ * @covers ExtensionManager\JsonFileReader
  *
  * @group ComposerPackages
  *
