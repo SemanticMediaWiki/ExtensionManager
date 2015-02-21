@@ -2,8 +2,6 @@
 
 namespace ExtensionManager\DIC;
 
-use ServiceRegistry\ServiceRegistry;
-
 /**
  * Static access to the dependency injection container.
  *
@@ -31,13 +29,9 @@ final class ServiceAccess {
 	}
 
 	private static function newServiceBuilder() {
-		return new ServiceBuilder( self::newServiceRegistry() );
-	}
-
-	private static function newServiceRegistry() {
 		$dir = defined( 'MW_PHPUNIT_TEST' ) ? __DIR__ . '/../../' : $GLOBALS['IP'];
 
-		return new ServiceRegistry( new ServicesContainer( $dir, 'composer.lock' ) );
+		return new ServiceBuilder( $dir, 'composer.lock' );
 	}
 
 }
