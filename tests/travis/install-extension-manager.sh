@@ -22,7 +22,7 @@ function installToMediaWikiRoot {
 		composer require 'mediawiki/extension-manager='$EXTMAN --prefer-source --update-with-dependencies
 	else
 		composer init --stability dev
-		composer require mediawiki/extension-manager "dev-master" --prefer-source --dev --update-with-dependencies
+		composer require mediawiki/extension-manager "dev-master" --prefer-source --dev --update-with-dependencies -vvv
 
 		ls
 		cd extensions
