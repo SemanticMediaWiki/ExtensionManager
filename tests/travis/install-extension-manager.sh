@@ -24,7 +24,10 @@ function installToMediaWikiRoot {
 		composer init --stability dev
 		composer require mediawiki/extension-manager "dev-master" --prefer-source --dev --update-with-dependencies
 
+		ls
 		cd extensions
+
+		ls
 		cd ExtensionManager
 
 		# Pull request number, "false" if it's not a pull request
