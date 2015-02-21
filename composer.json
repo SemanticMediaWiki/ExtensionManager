@@ -31,10 +31,7 @@
 		],
 		"psr-4": {
 			"ExtensionManager\\": "src/"
-		},
-		"classmap": [
-			"temp/"
-		]
+		}
 	},
 	"scripts":{
 		"test": [
