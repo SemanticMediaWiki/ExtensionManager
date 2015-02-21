@@ -23,30 +23,23 @@
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"mwjames/service-registry": "~0.1",
-		"jeroen-de-dauw/i18n": "~0.1",
-		"jeroen/simple-cache": "~2.0",
-		"jeroen/file-fetcher": "~2.0"
+		"jeroen-de-dauw/i18n": "~0.1"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url":	"https://github.com/mwjames/service-registry"
-		}
-	],
 	"autoload": {
 		"files" : [
 			"ExtensionManager.php"
 		],
 		"psr-4": {
 			"ExtensionManager\\": "src/"
-		}
+		},
+		"classmap": [
+			"temp/"
+		]
 	},
 	"scripts":{
 		"test": [
-			"composer validate --no-interaction",
-			"composer dump-autoload",
-			"php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
+			"php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
+			"composer validate --no-interaction"
 		]
 	}
 }
