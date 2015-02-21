@@ -1,6 +1,7 @@
 <?php
 
 if ( defined( 'EXTENSION_MANAGER_VERSION' ) ) {
+	// Do not initialize more than once.
 	return 1;
 }
 
@@ -19,17 +20,15 @@ if ( defined( 'MEDIAWIKI' ) ) {
 			'mwjames',
 			'Jeroen De Dauw'
 		),
-		// TODO: url
+		'url' => 'https://github.com/SemanticMediaWiki/ExtensionManager',
 		'descriptionmsg'  => 'extension-manager-description',
 	);
 
-	// Message class
+	// TODO: migrate to JSON i18n
 	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManager']      = __DIR__ . '/' . 'ExtensionManager.i18n.php';
 	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManagerAlias'] = __DIR__ . '/' . 'ExtensionManager.alias.php';
 
-	// Special page
 	$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ExtensionManager\MediaWiki\Specials\ListComposerPackages';
 
-	// Api
 	$GLOBALS['wgAPIModules']['composerpackages'] = 'ExtensionManager\MediaWiki\Api\ComposerPackages';
 }
