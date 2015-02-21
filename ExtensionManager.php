@@ -17,16 +17,17 @@ if ( defined( 'MEDIAWIKI' ) ) {
 		'name'            => 'Extension Manager',
 		'version'         => EXTENSION_MANAGER_VERSION,
 		'author'          => array(
-			'mwjames',
+			'James Hong Kong',
 			'Jeroen De Dauw'
 		),
 		'url' => 'https://github.com/SemanticMediaWiki/ExtensionManager',
 		'descriptionmsg'  => 'extension-manager-description',
 	);
 
-	// TODO: migrate to JSON i18n
-	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManager']      = __DIR__ . '/' . 'ExtensionManager.i18n.php';
-	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManagerAlias'] = __DIR__ . '/' . 'ExtensionManager.alias.php';
+	$GLOBALS['wgMessagesDirs']['ExtensionManager'] = __DIR__ . '/i18n';
+	
+	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManager'] = __DIR__ . '/i18n/ExtensionManager.i18n.php';
+	$GLOBALS['wgExtensionMessagesFiles']['ExtensionManagerAlias'] = __DIR__ . '/i18n/ExtensionManager.i18n.alias.php';
 
 	$GLOBALS['wgSpecialPages']['ListComposerPackages'] = 'ExtensionManager\MediaWiki\Specials\ListComposerPackages';
 
