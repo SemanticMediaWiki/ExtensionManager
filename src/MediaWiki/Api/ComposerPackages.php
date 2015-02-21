@@ -33,10 +33,7 @@ class ComposerPackages extends ApiBase {
 		$this->getResult()->addValue( null, 'query', $this->runFormatter( $packages ) );
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function runFormatter( $packages ) {
+	private function runFormatter( $packages ) {
 		if ( $this->getResult()->getIsRawMode() ) {
 			$this->dieUsageMsg( array( 'Selected format is not supported' ) );
 		};

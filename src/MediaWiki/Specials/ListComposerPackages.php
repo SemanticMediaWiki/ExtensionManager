@@ -15,16 +15,10 @@ use ServiceRegistry\ServiceRegistry;
  */
 class ListComposerPackages extends \SpecialPage {
 
-	/**
-	 * @since 0.1
-	 */
 	public function __construct() {
 		parent::__construct( 'ListComposerPackages' );
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function execute( $par ) {
 		$this->setHeaders();
 
@@ -36,7 +30,7 @@ class ListComposerPackages extends \SpecialPage {
 	/**
 	 * TODO: use
 	 */
-	protected function canNotRead( $reader ) {
+	private function canNotRead( $reader ) {
 		return $this->msg( 'composerpackages-file-not-available', $reader->getFileName() );
 	}
 

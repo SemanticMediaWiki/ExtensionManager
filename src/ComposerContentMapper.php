@@ -15,7 +15,7 @@ use InvalidArgumentException;
 class ComposerContentMapper {
 
 	/** @var array */
-	protected $fileReader = null;
+	private $fileReader = null;
 
 	/**
 	 * Internal mapping to external reference key used by the
@@ -23,7 +23,7 @@ class ComposerContentMapper {
 	 *
 	 * @var array
 	 */
-	protected $composerKeyMapping = array(
+	private $composerKeyMapping = array(
 		'packages' => 'packages',
 		'name'     => 'name',
 		'version'  => 'version',
@@ -75,23 +75,11 @@ class ComposerContentMapper {
 		return null;
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function hasArrayElement( $elementName, $element ) {
-
-		if ( isset( $element[ $elementName ] ) ) {
-			return true;
-		}
-
-		return false;
+	private function hasArrayElement( $elementName, $element ) {
+		return isset( $element[ $elementName ] );
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function getArrayElement( $elementName, $element ) {
-
+	private function getArrayElement( $elementName, $element ) {
 		if ( $this->hasArrayElement( $elementName, $element ) ) {
 			return $element[ $elementName ];
 		}
@@ -99,11 +87,7 @@ class ComposerContentMapper {
 		return null;
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function getComposerKey( $key ) {
-
+	private function getComposerKey( $key ) {
 		if ( !$this->hasArrayElement( $key, $this->composerKeyMapping ) ) {
 			throw new InvalidArgumentException( "Element {$key} can not be mapped or is unknown" );
 		}
