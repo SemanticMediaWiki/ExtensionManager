@@ -38,24 +38,15 @@ class PackageTableBuilder {
 		return $this->getInfo() . $this->getTableSection() . $this->getTable();
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function getInfo() {
+	private function getInfo() {
 		return $this->messageBuilder->msgText( 'composerpackages-intro' );
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function getTableSection() {
+	private function getTableSection() {
 		return $this->htmlFormatter->createElement( 'h2', $this->messageBuilder->msgText( 'composerpackages-table-header' ) );
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function getTable() {
+	private function getTable() {
 		return $this->htmlFormatter->createElement(
 			'table',
 			$this->createTableContent(),
@@ -63,10 +54,7 @@ class PackageTableBuilder {
 		);
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function createTableContent() {
+	private function createTableContent() {
 		$out = '';
 
 		$out .= $this->htmlFormatter->createElement( 'tr',
@@ -104,10 +92,7 @@ class PackageTableBuilder {
 		);
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function createDependencyList( $require ) {
+	private function createDependencyList( $require ) {
 		$out = '';
 
 		if ( is_array( $require ) ) {

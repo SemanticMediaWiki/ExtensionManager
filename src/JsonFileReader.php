@@ -50,31 +50,22 @@ class JsonFileReader {
 
 		$fileContents = json_decode( $this->fetchFileContents( $file ), true );
 
-		if ( !$this->assertValidJson( $fileContents, json_last_error() ) ) {
+		if ( !$this->isValidJson( $fileContents, json_last_error() ) ) {
 			throw new UnexpectedValueException( 'File contents is not JSON compatible' );
 		}
 
 		return $fileContents;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	protected function assertFileExists( $file ) {
 		return file_exists( $file );
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	protected function fetchFileContents( $file ) {
 		return file_get_contents( $file );
 	}
 
-	/**
-	 * @since 0.1
-	 */
-	protected function assertValidJson( $decode, $error ) {
+	private function isValidJson( $decode, $error ) {
 		return $decode !== null && (array)$decode === $decode && $error === JSON_ERROR_NONE;
 	}
 
