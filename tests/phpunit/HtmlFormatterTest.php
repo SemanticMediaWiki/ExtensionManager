@@ -29,7 +29,7 @@ class HtmlFormatterTest extends \PHPUnit_Framework_TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$html::staticExpects( $this->any() )
+		$html->expects( $this->any() )
 			->method( 'rawElement' )
 			->will( $this->returnValue( $text ) );
 

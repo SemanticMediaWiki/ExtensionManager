@@ -27,7 +27,7 @@ class HtmlFormatter {
 	 * @return string
 	 */
 	public function createElement( $element, $contents = '', $attribs = array() ) {
-		return call_user_func_array( array( $this->html, 'rawElement' ), array( $element, $attribs, $contents ) );
+		return Html::rawElement( $element, $attribs, $contents );
 	}
 
 }

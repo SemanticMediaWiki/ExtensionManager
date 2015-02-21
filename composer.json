@@ -25,8 +25,8 @@
 		"php": ">=5.3.2",
 		"mwjames/service-registry": "~0.1",
 		"jeroen-de-dauw/i18n": "~0.1",
-		"jeroen-de-dauw/simple-cache": "~1.0",
-		"jeroen-de-dauw/file-fetcher": "~1.0"
+		"jeroen/simple-cache": "~2.0",
+		"jeroen/file-fetcher": "~2.0"
 	},
 	"repositories": [
 		{
@@ -41,5 +41,8 @@
 		"psr-0": {
 			"ExtensionManager\\": "src/"
 		}
+	},
+	"scripts":{
+		"test": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
 	}
 }
