@@ -12,3 +12,8 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'ListComposerPackages' => array( 'ListComposerPackages' ),
 );
+
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ListComposerPackages' => array( 'Composer-Programmpaketliste' ),
+);

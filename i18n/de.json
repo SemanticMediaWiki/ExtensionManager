@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Kghbln"
+        ]
+    },
+    "extension-manager-description" : "Ermöglicht das Verwalten von Programmerweiterungen mit Composer",
+    "special-listcomposerpackages" : "Composer-Programmpakete",
+    "listcomposerpackages" : "Composer-Programmpakete",
+    "composerpackages-intro" : "Composer schreibt die Liste der Installierten Programmpakete in eine .lock-Datei. Um die Programmpakete zu Aktualisieren wird das von Composer bereitgestellte <code>update</code> Kommando genutzt.",
+    "composerpackages-file-not-available" : "Die Datei „$1“ zum Einrichten und Konkfigurieren der Programmpakete ist nicht vorhanden. Das Ausführen des von Composer bereitgestellten Kommandos <code>composer install</code> im Hauptverzeichnis der MediaWiki-Installation is notwendig, um die installierten Programmpakete anzeigen zu können.",
+    "composerpackages-table-header" : "Installierte Programmpakete",
+    "composerpackages-table-header-package" : "Paket",
+    "composerpackages-table-header-type" : "Typ",
+    "composerpackages-table-header-version" : "Version",
+    "composerpackages-table-header-time" : "Zeit",
+    "composerpackages-table-header-dependencies" : "Abhängigkeiten"
+}
