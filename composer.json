@@ -38,11 +38,15 @@
 		"files" : [
 			"ExtensionManager.php"
 		],
-		"psr-0": {
+		"psr-4": {
 			"ExtensionManager\\": "src/"
 		}
 	},
 	"scripts":{
-		"test": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
+		"test": [
+			"composer validate --no-interaction",
+			"composer dump-autoload",
+			"php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
+		]
 	}
 }
