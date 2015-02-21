@@ -1,28 +1,34 @@
 <?php
-
+/**
+ * This is a backwards-compatibility shim for message internationalization
+ *
+ * Beginning with MediaWiki 1.23, translation strings are stored in json files,
+ * and the EXTENSION.i18n.php file only exists to provide compatibility with
+ * older releases of MediaWiki. For more information about this migration, see:
+ * https://www.mediawiki.org/wiki/Requests_for_comment/Localisation_format
+ *
+ * This shim maintains compatibility back to MediaWiki 1.17.
+ */
 $messages = array();
-
-/**
- * @author mwjames
- */
-$messages['en'] = array(
-	'extension-manager-description' => 'Extension Manager',
-
-	'special-listcomposerpackages'  => 'Composer packages',
-	'listcomposerpackages' => 'Composer packages',
-	'composerpackages-intro' => 'Composer writes the list of the installed packages into a lock file. To update the packages, use the composer <code>update</code> command.',
-	'composerpackages-file-not-available' => 'The file ($1) is not available for the current configuration or setup. Running <code>composer install</code> from the MediaWiki directory is requiered in order to display installed packages.',
-	'composerpackages-table-header' => 'Installed packages',
-	'composerpackages-table-header-package' => 'Package',
-	'composerpackages-table-header-type' => 'Type',
-	'composerpackages-table-header-version' => 'Version',
-	'composerpackages-table-header-time' => 'Time',
-	'composerpackages-table-header-dependencies' => 'Dependencies',
-);
-
-/**
- * @author mwjames
- */
-$messages['qqq'] = array(
-	'extension-manager-description' => '{{desc}}',
-);
+if ( !function_exists( 'wfJsonI18nShimExtensionManager5277836' ) ) {
+   function wfJsonI18nShimExtensionManager5277836( $cache, $code, &$cachedData ) {
+       $codeSequence = array_merge( array( $code ), $cachedData['fallbackSequence'] );
+       foreach ( $codeSequence as $csCode ) {
+           $fileName = dirname( __FILE__ ) . "/i18n/$csCode.json";
+           if ( is_readable( $fileName ) ) {
+               $data = FormatJson::decode( file_get_contents( $fileName ), true );
+               foreach ( array_keys( $data ) as $key ) {
+                   if ( $key === '' || $key[0] === '@' ) {
+                       unset( $data[$key] );
+                   }
+               }
+               $cachedData['messages'] = array_merge( $data, $cachedData['messages'] );
+           }
+ 
+           $cachedData['deps'][] = new FileDependency( $fileName );
+       }
+       return true;
+   }
+ 
+   $GLOBALS['wgHooks']['LocalisationCacheRecache'][] = 'wfJsonI18nShimExtensionManager5277836';
+}
