@@ -2,8 +2,7 @@
 
 namespace ExtensionManager\MediaWiki\Specials;
 
-use ExtensionManager\DIC\ServiceAccess;
-use ServiceRegistry\ServiceRegistry;
+use ExtensionManager\ServiceAccess;
 
 /**
  * Implements Special:ListComposerPackages

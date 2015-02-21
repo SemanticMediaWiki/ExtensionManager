@@ -2,7 +2,7 @@
 
 namespace ExtensionManager\MediaWiki\Api;
 
-use ExtensionManager\DIC\ServiceAccess;
+use ExtensionManager\ServiceAccess;
 
 use ApiBase;
 

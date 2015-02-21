@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtensionManager\DIC;
+namespace ExtensionManager;
 
 use ExtensionManager\ComposerContentMapper;
 use ExtensionManager\FileInfo;
