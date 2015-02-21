@@ -8,8 +8,6 @@ use ServiceRegistry\ServiceRegistry;
  * @group ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class ServicesContainerSetupIntegrationTest extends \PHPUnit_Framework_TestCase {
@@ -22,9 +20,6 @@ class ServicesContainerSetupIntegrationTest extends \PHPUnit_Framework_TestCase 
 		parent::setUp();
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testAvailableServices() {
 		$requestContext = $this->getMockBuilder( '\RequestContext' )
 			->disableOriginalConstructor()

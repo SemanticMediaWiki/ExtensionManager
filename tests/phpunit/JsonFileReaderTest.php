@@ -11,8 +11,6 @@ use ExtensionManager\FileInfo;
  * @group ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
@@ -32,9 +30,6 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 		]
 	}';
 
-	/**
-	 * @since 0.1
-	 */
 	public function newInstance( $path, $file ) {
 		return new JsonFileReader( new FileInfo( $path, $file ) );
 	}
@@ -59,17 +54,11 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 		return $fileReader;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testCanReadFile() {
 		$this->assertTrue( $this->newFileReaderMock( true )->canReadFile() );
 		$this->assertFalse( $this->newFileReaderMock( false )->canReadFile() );
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testDecodeJsonFile() {
 		$this->assertInternalType(
 			'array',
@@ -78,9 +67,6 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testDecodeJsonFileInvalidFormatException() {
 
 		$this->setExpectedException( 'UnexpectedValueException' );
@@ -92,9 +78,6 @@ class JsonFileReaderTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testDecodeJsonFileInvalidFileException() {
 
 		$this->setExpectedException( 'InvalidArgumentException' );

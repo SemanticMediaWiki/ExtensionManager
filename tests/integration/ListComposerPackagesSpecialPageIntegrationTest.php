@@ -15,8 +15,6 @@ use Language;
  * @group ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class ListComposerPackagesSpecialPageIntegrationTest extends \PHPUnit_Framework_TestCase {
@@ -29,9 +27,6 @@ class ListComposerPackagesSpecialPageIntegrationTest extends \PHPUnit_Framework_
 		parent::setUp();
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function newInstance() {
 
 		$special = SpecialPageFactory::getPage( 'ListComposerPackages' );
@@ -45,9 +40,6 @@ class ListComposerPackagesSpecialPageIntegrationTest extends \PHPUnit_Framework_
 		return $special;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testExecute() {
 
 		try {

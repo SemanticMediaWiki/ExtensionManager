@@ -11,8 +11,6 @@ use ExtensionManager\ComposerContentMapper;
  * @group ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
@@ -32,9 +30,6 @@ class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 		)
 	);
 
-	/**
-	 * @since 0.1
-	 */
 	public function newMessageBuilderMock() {
 
 		$messageBuilder = $this->getMockBuilder( 'i18n\MessageBuilder' )
@@ -49,9 +44,6 @@ class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 		return $messageBuilder;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function newHtmlFormatterMock() {
 
 		$messageBuilder = $this->getMockBuilder( 'ExtensionManager\HtmlFormatter' )
@@ -66,9 +58,6 @@ class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 		return $messageBuilder;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function newFileReaderMock( $contents = array() ) {
 
 		$fileReader = $this->getMockBuilder( 'ExtensionManager\JsonFileReader' )
@@ -83,9 +72,6 @@ class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 		return $fileReader;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function newInstance( $contents = array() ) {
 		return new PackageTableBuilder(
 			new ComposerContentMapper( $this->newFileReaderMock( $contents ) ),
@@ -94,16 +80,10 @@ class PackageTableBuilderTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testCanConstruct() {
 		$this->assertInstanceOf( 'ExtensionManager\UI\PackageTableBuilder', $this->newInstance() );
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testGetText() {
 		$this->assertInternalType( 'string', $this->newInstance( $this->mockContent )->getText() );
 	}

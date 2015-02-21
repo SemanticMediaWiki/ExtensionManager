@@ -15,8 +15,6 @@ use ApiMain;
  * @group ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
@@ -29,9 +27,6 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 		parent::setUp();
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function newInstance() {
 
 		$context = new RequestContext();
@@ -44,9 +39,6 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 		return $instance;
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testExecute() {
 		$instance = $this->newInstance();
 
@@ -61,9 +53,6 @@ class ComposerPackagesApiIntegrationTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue( true, 'Asserts that Api module ComposerPackages run without errors' );
 	}
 
-	/**
-	 * @since 0.1
-	 */
 	public function testExecuteOnNotSupportedFormatRaisingUsageException() {
 
 		$instance = $this->newInstance();
