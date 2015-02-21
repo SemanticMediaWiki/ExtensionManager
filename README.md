@@ -3,7 +3,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SemanticMediaWiki/ExtensionManager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SemanticMediaWiki/ExtensionManager/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/extension-manager/version.png)](https://packagist.org/packages/mediawiki/extension-manager)
 [![Packagist download count](https://poser.pugx.org/mediawiki/extension-manager/d/total.png)](https://packagist.org/packages/mediawiki/extension-manager)
-[![Dependency Status](https://www.versioneye.com/php/mediawiki:semantic-meta-tags/badge.png)](https://www.versioneye.com/php/mediawiki:semantic-meta-tags)
+[![Dependency Status](https://www.versioneye.com/php/mediawiki:extension-manager/badge.png)](https://www.versioneye.com/php/mediawiki:extension-manager)
 
 
 Requires MediaWiki 1.20 or later.
