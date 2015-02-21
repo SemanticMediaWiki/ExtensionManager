@@ -1,6 +1,6 @@
 <?php
 
-namespace ExtensionManager\DIC;
+namespace ExtensionManager;
 
 /**
  * Static access to the dependency injection container.
@@ -29,7 +29,7 @@ final class ServiceAccess {
 	}
 
 	private static function newServiceBuilder() {
-		$dir = defined( 'MW_PHPUNIT_TEST' ) ? __DIR__ . '/../../' : $GLOBALS['IP'];
+		$dir = defined( 'MW_PHPUNIT_TEST' ) ? __DIR__ . '/../' : $GLOBALS['IP'];
 
 		return new ServiceBuilder( $dir, 'composer.lock' );
 	}
