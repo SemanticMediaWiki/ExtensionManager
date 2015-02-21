@@ -15,7 +15,7 @@ use ServiceRegistry\ServiceRegistry;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ServiceAccess {
+final class ServiceAccess {
 
 	private static $instance = null;
 

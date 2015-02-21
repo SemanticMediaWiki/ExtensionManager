@@ -12,8 +12,6 @@ use ApiBase;
  * @ingroup ComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 1.9
- *
  * @author mwjames
  */
 class ComposerPackages extends ApiBase {

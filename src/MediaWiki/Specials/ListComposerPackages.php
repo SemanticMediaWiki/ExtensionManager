@@ -9,8 +9,6 @@ use ServiceRegistry\ServiceRegistry;
  * Implements Special:ListComposerPackages
  *
  * @licence GNU GPL v2+
- * @since 0.1
- *
  * @author mwjames
  */
 class ListComposerPackages extends \SpecialPage {

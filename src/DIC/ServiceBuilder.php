@@ -18,7 +18,7 @@ use ServiceRegistry\RegistryInterface;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ServiceBuilder {
+final class ServiceBuilder {
 
 	private $serviceRegistry;
 

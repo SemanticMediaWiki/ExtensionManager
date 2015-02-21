@@ -27,7 +27,7 @@ use ServiceRegistry\ServiceRegistry;
  *
  * @author mwjames
  */
-class ServicesContainer implements ServiceContainer {
+final class ServicesContainer implements ServiceContainer {
 
 	/**
 	 * @since 0.1
