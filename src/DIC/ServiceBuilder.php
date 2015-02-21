@@ -2,28 +2,28 @@
 
 namespace ExtensionManager\DIC;
 
+use ExtensionManager\ComposerContentMapper;
+use ExtensionManager\FileInfo;
+use ExtensionManager\HtmlFormatter;
 use ExtensionManager\JsonFileReader;
 use ExtensionManager\UI\PackageTableBuilder;
+use Html;
+use i18n\MediaWiki\LanguageTypes;
+use i18n\MediaWiki\MessageBuilderFactory;
 use IContextSource;
-use ServiceRegistry\RegistryInterface;
 
 /**
- * This class exposes methods to retrieve each type of generally accessible object
- * from the dependency manager. This is the only class that should retrieve objects
- * from the dependency manager.
- *
- * It is responsible for having the dependency manager construct the appropriate
- * object, or for retrieving it from an in-object cache where applicable.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class ServiceBuilder {
 
-	private $serviceRegistry;
+	private $path;
+	private $file;
 
-	public function __construct( RegistryInterface $serviceRegistry ) {
-		$this->serviceRegistry = $serviceRegistry;
+	public function __construct( $path, $file ) {
+		$this->path = $path;
+		$this->file =$file;
 	}
 
 	/**
@@ -32,12 +32,22 @@ final class ServiceBuilder {
 	 * @return PackageTableBuilder
 	 */
 	public function newPackageTableBuilder( IContextSource $context ) {
-		return $this->serviceRegistry->newObject(
-			'packageTableHtmlBuilder',
-			array(
-				'RequestContext' => $context
-			)
+		$factory = new MessageBuilderFactory();
+
+		$messageBuilder = $factory->newMessageBuilder(
+			$context,
+			LanguageTypes::INTERFACE_LANGUAGE
 		);
+
+		return new PackageTableBuilder(
+			new ComposerContentMapper( $this->newFileReader() ),
+			$messageBuilder,
+			new HtmlFormatter( new Html() )
+		);
+	}
+
+	private function newFileReader() {
+		return new JsonFileReader( new FileInfo( $this->path, $this->file ) );
 	}
 
 	/**
@@ -46,7 +56,7 @@ final class ServiceBuilder {
 	 * @return JsonFileReader
 	 */
 	public function newObjectThatReadsAndParsesSomeSpecificJson() {
-		return $this->serviceRegistry->newObject( 'FileReader' );
+		return $this->newFileReader();
 	}
 
 }
